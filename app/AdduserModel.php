@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EditprofilecoachModel extends Model
+class AdduserModel extends Model
 {
     public function index(){
-        return view('coach.editprofilecoach');
+
     }
+
 }

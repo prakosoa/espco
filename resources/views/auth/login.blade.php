@@ -115,7 +115,7 @@
 
         <a href="{{ route('password.request') }}">I forgot my password</a><br>
         <a href="{{ url('registerc') }}">Apply Coach?</a><br>
-        <a href="#" class="text-center">Register a new membership</a>
+        <a href="{{ url('register') }}" class="text-center">Register a new membership</a>
 
     </div>
     <!-- /.login-box-body -->

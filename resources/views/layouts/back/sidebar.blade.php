@@ -7,36 +7,25 @@
       <img src="../../dist/img/user-160x160.jpg" class="img-circle" alt="User Image">
     </div>
     <div class="pull-left info">
-      <p>Thanh Nguyen</p>
-      <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      <p>{{ Auth::user()->name }}</p>
+      {{--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>--}}
     </div>
   </div>
   <!-- search form -->
-  <form action="#" method="get" class="sidebar-form">
-    <div class="input-group">
-      <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-            </button>
-          </span>
-    </div>
-  </form>
+  {{--<form action="#" method="get" class="sidebar-form">--}}
+    {{--<div class="input-group">--}}
+      {{--<input type="text" name="q" class="form-control" placeholder="Search...">--}}
+          {{--<span class="input-group-btn">--}}
+            {{--<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>--}}
+            {{--</button>--}}
+          {{--</span>--}}
+    {{--</div>--}}
+  {{--</form>--}}
   <!-- /.search form -->
   <!-- sidebar menu: : style can be found in sidebar.less -->
   <ul class="sidebar-menu">
     <li class="header">MAIN NAVIGATION</li>
-    <li class="treeview">
-      <a href="#">
-        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-        <span class="pull-right-container">
-          <i class="fa fa-angle-left pull-right"></i>
-        </span>
-      </a>
-      <ul class="treeview-menu">
-        <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-        <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-      </ul>
-    </li>
+
     @if(Auth::user()->level==1)
       {{--<li>--}}
         {{--<a href="../widgets.html">--}}
@@ -46,7 +35,14 @@
         {{--</span>--}}
         {{--</a>--}}
       {{--</li>--}}
-
+      <li>
+        <a href="{{url('admin')}}">
+          <i class="fa fa-tachometer"></i> <span>Dashboard</span>
+          <span class="pull-right-container">
+      {{--<small class="label pull-right bg-green">Hot</small>--}}
+      </span>
+        </a>
+      </li>
       {{--usermanagement--}}
       <li class="treeview">
         <a href="#">
@@ -57,32 +53,28 @@
         </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{ url('coachtable') }}"><i class="fa fa-user-circle-o "></i> Coach</a></li>
-          <li><a href="../charts/morris.html"><i class="fa fa-user-circle"></i> User</a></li>
+          <li><a href="{{ url('/admin/coachtable/') }}"><i class="fa fa-user-circle-o "></i> Coach</a></li>
+          <li><a href="{{ url('/admin/usertable/') }}"><i class="fa fa-user-circle"></i> User</a></li>
         </ul>
       </li>
       {{----}}
       {{--Hire Payment--}}
       <li>
-      <a href="../widgets.html">
-      <i class="fa fa-shopping-cart"></i> <span>Hire Payment</span>
+      <a href="{{url('hireadmin')}}">
+      <i class="fa fa-shopping-cart"></i> <span>Hire</span>
       <span class="pull-right-container">
       {{--<small class="label pull-right bg-green">Hot</small>--}}
       </span>
       </a>
       </li>
-      {{----}}
-      @elseif(Auth::user()->level==2)\
-      {{--Myprofil--}}
+      @elseif(Auth::user()->level==2)
       <li>
-        <a href="../widgets.html">
+        <a href="/editprofilecoach">
           <i class="fa fa-user"></i> <span>My Profile</span>
           <span class="pull-right-container">
-      {{--<small class="label pull-right bg-green">Hot</small>--}}
       </span>
         </a>
       </li>
-      {{--Schedule--}}
     <li>
       <a href="../widgets.html">
         <i class="fa fa-calendar"></i> <span>Schedule</span>
@@ -94,7 +86,7 @@
       {{--Lesson--}}
     <li>
       <a href="../widgets.html">
-        <i class="fa fa-book"></i> <span>Lessons</span>
+        <i class="fa fa-book"></i> <span>Hire</span>
         <span class="pull-right-container">
       {{--<small class="label pull-right bg-green">Hot</small>--}}
       </span>
@@ -104,7 +96,7 @@
       @elseif(Auth::user()->level==3)
       {{--Myprofil--}}
       <li>
-        <a href="../widgets.html">
+        <a href="/editprofileuser">
           <i class="fa fa-user"></i> <span>My Profile</span>
           <span class="pull-right-container">
       {{--<small class="label pull-right bg-green">Hot</small>--}}
@@ -115,7 +107,7 @@
       {{--Lesson--}}
       <li>
         <a href="../widgets.html">
-          <i class="fa fa-book"></i> <span>Lessons</span>
+          <i class="fa fa-book"></i> <span>Hire</span>
           <span class="pull-right-container">
       {{--<small class="label pull-right bg-green">Hot</small>--}}
       </span>

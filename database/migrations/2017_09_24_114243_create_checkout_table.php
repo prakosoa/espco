@@ -13,14 +13,15 @@ class CreateCheckoutTable extends Migration
      */
     public function up()
     {
-        Schema::create('checkout', function (Blueprint $table) {
+        Schema::create('checkouts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('order_schedules_id');
+            $table->unsignedInteger('order_schedules_id');
             $table->string('bank_number');
             $table->string('bank_name');
             $table->string('phone');
             $table->decimal('total_fee');
             $table->integer('status');
+            $table->timestamps();
             $table->index('order_schedules_id');
 
 

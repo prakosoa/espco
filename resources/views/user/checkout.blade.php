@@ -53,7 +53,7 @@
                     <!--REVIEW ORDER-->
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            Review Order <div class="pull-right"><small><a class="afix-1" href="#">Edit Cart</a></small></div>
+                            Review Order <div class="pull-right"><small><a class="afix-1" href="#"></a></small></div>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
@@ -126,12 +126,7 @@
                                     {{--<h4>Payment</h4>--}}
                                 {{--</div>--}}
                             {{--</div>--}}
-                            <div class="form-group">
-                                <div class="col-md-12"><strong>Bank:</strong></div>
-                                <div class="col-md-12">
-                                    <input type="text" class="form-control" name="bank" value="" />
-                                </div>
-                            </div>
+
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Bank Account Number:</strong></div>
                                 <div class="col-md-12">

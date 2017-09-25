@@ -17,15 +17,18 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->integer('level')->nullable();
             $table->string('password');
-            $table->string('nickname');
-            $table->string('phone');
-            $table->text('steam');
-            $table->string('rank');
-            $table->integer('games_id');
-            $table->decimal('fee');
-            $table->text('photo');
+            $table->string('nickname')->nullable();
+            $table->string('phone')->nullable();
+            $table->text('steam')->nullable();
+            $table->string('rank')->nullable();
+            $table->unsignedInteger('games_id')->nullable();
+            $table->decimal('fee')->nullable();
+            $table->text('about')->nullable();
+            $table->text('photo')->nullable();
             $table->index('games_id');
+
 
 
             $table->rememberToken();

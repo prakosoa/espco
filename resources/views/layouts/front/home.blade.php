@@ -27,28 +27,28 @@
             <div class="row">
                 <div class="col-md-4 intro-feature">
                     <div class="intro-icon">
-                        <span data-icon="&#xe033;" class="icon"></span>
+                        <span data-icon="&#xe007;" class="icon"></span>
                     </div>
                     <div class="intro-content">
-                        <h5>Easily Customised</h5>
+                        <h5>Find Your Coach</h5>
                         <p>Easily customise Sedna to suit your start up, portfolio or product. Take advantage of the layered Sketch file and bring your product to life.</p>
                     </div>
                 </div>
                 <div class="col-md-4 intro-feature">
                     <div class="intro-icon">
-                        <span data-icon="&#xe030;" class="icon"></span>
+                        <span data-icon="&#xe039;" class="icon"></span>
                     </div>
                     <div class="intro-content">
-                        <h5>Modern Design</h5>
+                        <h5>Increase Your Skill</h5>
                         <p>Designed with modern trends and techniques in mind, Sedna will help your product stand out in an already saturated market.</p>
                     </div>
                 </div>
                 <div class="col-md-4 intro-feature">
                     <div class="intro-icon">
-                        <span data-icon="&#xe046;" class="icon"></span>
+                        <span data-icon="&#xe023;" class="icon"></span>
                     </div>
                     <div class="intro-content last">
-                        <h5>Responsive Development</h5>
+                        <h5>Reach Your Goal</h5>
                         <p>Built using the latest web technologies like html5, css3, and jQuery, rest assured Sedna will look smashing on every device under the sun.</p>
                     </div>
                 </div>
@@ -108,11 +108,10 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="feature-list">
-                        <h3>Designed with Sketch!</h3>
-                        <p>Easily change/switch/swap every placeholder inside every image on Sedna with the included Sketch files. You’ll have this template customised to suit your business in no time! </p>
-                        <p>Nam vehicula malesuada lectus, interdum fringilla nibh. Duis aliquam vitae metus a pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum augue quis augue ornare, eget faucibus felis pharetra. Proin condimentum et leo quis fringilla.
-                        </p>
-                        <a href="#" class="btn btn-ghost btn-accent btn-small">What's Sketch?</a>
+                        <h3>Esports</h3>
+                        <p>eSports (also known as electronic sports, esports, e-sports, competitive (video) gaming, professional (video) gaming, or pro gaming) are a form of competition that is facilitated by electronic systems, particularly video games; the input of players and teams as well as the output of the eSports system are mediated by human-computer interfaces.</p>
+                        <p>The most common video game genres associated with eSports are real-time strategy, fighting, first-person shooter (FPS), and multiplayer online battle arena (MOBA). Tournaments such as The International, the LoL World Championship, the Evolution Championship Series.</p>
+
                     </div>
                 </div>
             </div>
@@ -124,10 +123,10 @@
         <div class="container">
             <div class="col-md-12 text-center">
                 <h2>
-                    Customise Sedna with the included <span class="sketch">Sketch <i class="version">3</i></span> file
+                    Interested in becoming a coach?
                 </h2>
-                <p>Change/swap/edit every aspect of Sedna before you hit development with the included Sketch file.</p>
-                <a href="#" class="btn btn-ghost btn-accent btn-large">Download now!</a>
+                <p></p>
+                <a href="/registerc" class="btn btn-ghost btn-accent btn-large">Register Now!</a>
                 <div class="logo-placeholder floating-logo"><img src="img/sketch-logo.png" alt="Sketch Logo"></div>
             </div>
         </div>
@@ -151,67 +150,67 @@
             </div>
         </div>
     </section>
-    <section class="blog text-center">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4">
-                    <article class="blog-post">
-                        <figure>
-                            <a href="img/blog-img-01.jpg" class="single_image">
-                                <div class="blog-img-wrap">
-                                    <div class="overlay">
-                                        <i class="fa fa-search"></i>
-                                    </div>
-                                    <img src="img/blog-img-01.jpg" alt="Sedna blog image"/>
-                                </div>
-                            </a>
-                            <figcaption>
-                                <h2><a href="#" class="blog-category" data-toggle="tooltip" data-placement="top" data-original-title="See more posts">Product</a></h2>
-                                <p><a href="#" class="blog-post-title">Getting started with Sedna <i class="fa fa-angle-right"></i></a></p>
-                            </figcaption>
-                        </figure>
-                    </article>
-                </div>
-                <div class="col-md-4">
-                    <article class="blog-post">
-                        <figure>
-                            <a href="img/blog-img-02.jpg" class="single_image">
-                                <div class="blog-img-wrap">
-                                    <div class="overlay">
-                                        <i class="fa fa-search"></i>
-                                    </div>
-                                    <img src="img/blog-img-02.jpg" alt="Sedna blog image"/>
-                                </div>
-                            </a>
-                            <figcaption>
-                                <h2><a href="#" class="blog-category" data-toggle="tooltip" data-placement="top" data-original-title="See more posts">Technology</a></h2>
-                                <p><a href="#" class="blog-post-title">Why IE8 support is deminishing <i class="fa fa-angle-right"></i></a></p>
-                            </figcaption>
-                        </figure>
-                    </article>
-                </div>
-                <div class="col-md-4">
-                    <article class="blog-post">
-                        <figure>
-                            <a href="img/blog-img-03.jpg" class="single_image">
-                                <div class="blog-img-wrap">
-                                    <div class="overlay">
-                                        <i class="fa fa-search"></i>
-                                    </div>
-                                    <img src="img/blog-img-03.jpg" class="single_image" alt="Sedna blog image"/>
-                                </div>
-                            </a>
-                            <figcaption>
-                                <h2><a href="#" class="blog-category" data-toggle="tooltip" data-placement="top" data-original-title="See more posts">Product</a></h2>
-                                <p><a href="#" class="blog-post-title">Sedna tutorial: How to begin your <i class="fa fa-angle-right"></i></a></p>
-                            </figcaption>
-                        </figure>
-                    </article>
-                </div>
-                <a href="#" class="btn btn-ghost btn-accent btn-small">More news</a>
-            </div>
-        </div>
-    </section>
+    {{--<section class="blog text-center">--}}
+        {{--<div class="container-fluid">--}}
+            {{--<div class="row">--}}
+                {{--<div class="col-md-4">--}}
+                    {{--<article class="blog-post">--}}
+                        {{--<figure>--}}
+                            {{--<a href="img/blog-img-01.jpg" class="single_image">--}}
+                                {{--<div class="blog-img-wrap">--}}
+                                    {{--<div class="overlay">--}}
+                                        {{--<i class="fa fa-search"></i>--}}
+                                    {{--</div>--}}
+                                    {{--<img src="img/blog-img-01.jpg" alt="Sedna blog image"/>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                            {{--<figcaption>--}}
+                                {{--<h2><a href="#" class="blog-category" data-toggle="tooltip" data-placement="top" data-original-title="See more posts">Product</a></h2>--}}
+                                {{--<p><a href="#" class="blog-post-title">Getting started with Sedna <i class="fa fa-angle-right"></i></a></p>--}}
+                            {{--</figcaption>--}}
+                        {{--</figure>--}}
+                    {{--</article>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-4">--}}
+                    {{--<article class="blog-post">--}}
+                        {{--<figure>--}}
+                            {{--<a href="img/blog-img-02.jpg" class="single_image">--}}
+                                {{--<div class="blog-img-wrap">--}}
+                                    {{--<div class="overlay">--}}
+                                        {{--<i class="fa fa-search"></i>--}}
+                                    {{--</div>--}}
+                                    {{--<img src="img/blog-img-02.jpg" alt="Sedna blog image"/>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                            {{--<figcaption>--}}
+                                {{--<h2><a href="#" class="blog-category" data-toggle="tooltip" data-placement="top" data-original-title="See more posts">Technology</a></h2>--}}
+                                {{--<p><a href="#" class="blog-post-title">Why IE8 support is deminishing <i class="fa fa-angle-right"></i></a></p>--}}
+                            {{--</figcaption>--}}
+                        {{--</figure>--}}
+                    {{--</article>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-4">--}}
+                    {{--<article class="blog-post">--}}
+                        {{--<figure>--}}
+                            {{--<a href="img/blog-img-03.jpg" class="single_image">--}}
+                                {{--<div class="blog-img-wrap">--}}
+                                    {{--<div class="overlay">--}}
+                                        {{--<i class="fa fa-search"></i>--}}
+                                    {{--</div>--}}
+                                    {{--<img src="img/blog-img-03.jpg" class="single_image" alt="Sedna blog image"/>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                            {{--<figcaption>--}}
+                                {{--<h2><a href="#" class="blog-category" data-toggle="tooltip" data-placement="top" data-original-title="See more posts">Product</a></h2>--}}
+                                {{--<p><a href="#" class="blog-post-title">Sedna tutorial: How to begin your <i class="fa fa-angle-right"></i></a></p>--}}
+                            {{--</figcaption>--}}
+                        {{--</figure>--}}
+                    {{--</article>--}}
+                {{--</div>--}}
+                {{--<a href="#" class="btn btn-ghost btn-accent btn-small">More news</a>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section>--}}
     <!-- <section class="testimonial-slider section-padding text-center">
         <div class="container">
             <div class="row">

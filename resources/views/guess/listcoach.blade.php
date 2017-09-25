@@ -32,15 +32,42 @@
                         {{--search--}}
 
 
-
-
+                        <div class="container">
+                            <div class="row searchFilter" >
+                                <div class="col-sm-12" >
+                                    <div class="input-group" >
+                                        <input id="table_filter" type="text" class="form-control" aria-label="Text input with segmented button dropdown" >
+                                        <div class="input-group-btn" >
+                                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span class="label-icon" >Category</span> <span class="caret" >&nbsp;</span></button>
+                                            <div class="dropdown-menu dropdown-menu-right" >
+                                                <ul class="category_filters" >
+                                                    <li >
+                                                        <input class="cat_type category-input" data-label="All" id="all" value="" name="radios" type="radio" ><label for="all" >All</label>
+                                                    </li>
+                                                    <li >
+                                                        <input type="radio" name="radios" id="Design" value="1" ><label class="category-label" for="Dota2" >Dota2</label>
+                                                    </li>
+                                                    <li >
+                                                        <input type="radio" name="radios" id="Marketing" value="2" ><label class="category-label" for="CSGO" >CSGO</label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <button id="searchBtn" type="button" class="btn btn-secondary btn-search" ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Search</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
                         {{--search end--}}
                 {{--<h1 class="text-center">Vote for your favorite</h1>--}}
                 <div class="list-groupds">
                     <div href="#" class="list-group-items" style=" background: dimgrey; ">
                         <div class="media col-md-3">
                             <figure class="pull-left">
-                                <img class="media-object img-rounded img-responsive"  src="http://wiki.teamliquid.net/commons/images/thumb/3/3d/Fear_frankfurt_major_2015.jpg/600px-Fear_frankfurt_major_2015.jpg" alt="placehold.it/350x250" >
+                                <img class="media-object img-rounded img-responsive"  src="https://cdn.dotablast.com/wp-content/uploads/2015/07/fearesl.png" alt="placehold.it/350x250" >
                             </figure>
                         </div>
                         <div class="col-md-6">
@@ -54,66 +81,10 @@
                         <div class="col-md-3 text-center">
                             <h2> 350000 <small> /hr </small></h2>
                            <a href="{{ url('profilecoach') }}"> <button type="button" class="btn btn-primary btn-lg btn-block" > Hire Now! </button></a>
-                            {{--<div class="stars">--}}
-                                {{--<span class="glyphicon glyphicon-star"></span>--}}
-                                {{--<span class="glyphicon glyphicon-star"></span>--}}
-                                {{--<span class="glyphicon glyphicon-star"></span>--}}
-                                {{--<span class="glyphicon glyphicon-star"></span>--}}
-                                {{--<span class="glyphicon glyphicon-star-empty"></span>--}}
-                            {{--</div>--}}
                             <p><b>Rank :</b>  <small>  </small> <b>7000</b> </p>
                         </div>
                     </div>
-                    {{--<div href="#" class="list-group-items">--}}
-                        {{--<div class="media col-md-3">--}}
-                            {{--<figure class="pull-left">--}}
-                                {{--<img class="media-object img-rounded img-responsive" src="http://placehold.it/350x250" alt="placehold.it/350x250" >--}}
-                            {{--</figure>--}}
-                        {{--</div>--}}
-                        {{--<div class="col-md-6">--}}
-                            {{--<h4 class="list-group-item-heading"> List group heading </h4>--}}
-                            {{--<p class="list-group-item-text"> Eu eum corpora torquatos, ne postea constituto mea, quo tale lorem facer no. Ut sed odio appetere partiendo, quo meliore salutandi ex. Vix an sanctus vivendo, sed vocibus accumsan petentium ea.--}}
-                                {{--Sed integre saperet at, no nec debet erant, quo dico incorrupte comprehensam ut. Et minimum consulatu ius, an dolores iracundia est, oportere vituperata interpretaris sea an. Sed id error quando indoctum, mel suas saperet at.--}}
-                            {{--</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="col-md-3 text-center">--}}
-                            {{--<h2> 12424 <small> votes </small></h2>--}}
-                            {{--<button type="button" class="btn btn-primary btn-lg btn-block">Vote Now!</button>--}}
-                            {{--<div class="stars">--}}
-                                {{--<span class="glyphicon glyphicon-star"></span>--}}
-                                {{--<span class="glyphicon glyphicon-star"></span>--}}
-                                {{--<span class="glyphicon glyphicon-star"></span>--}}
-                                {{--<span class="glyphicon glyphicon-star"></span>--}}
-                                {{--<span class="glyphicon glyphicon-star-empty"></span>--}}
-                            {{--</div>--}}
-                            {{--<p> Average 3.9 <small> / </small> 5 </p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div href="#" class="list-group-items">--}}
-                        {{--<div class="media col-md-3">--}}
-                            {{--<figure class="pull-left">--}}
-                                {{--<img class="media-object img-rounded img-responsive" src="http://placehold.it/350x250" alt="placehold.it/350x250">--}}
-                            {{--</figure>--}}
-                        {{--</div>--}}
-                        {{--<div class="col-md-6">--}}
-                            {{--<h4 class="list-group-item-heading"> List group heading </h4>--}}
-                            {{--<p class="list-group-item-text"> Ut mea viris eripuit theophrastus, cu ponderum accusata consequuntur cum. Suas quaestio cotidieque pro ea. Nam nihil persecuti philosophia id, nam quot populo ea.--}}
-                                {{--Falli urbanitas ei pri, eu est enim volumus, mei no volutpat periculis. Est errem iudicabit cu. At usu vocibus officiis, ad ius eros tibique appellantur.--}}
-                            {{--</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="col-md-3 text-center">--}}
-                            {{--<h2> 13540 <small> votes </small></h2>--}}
-                            {{--<button type="button" class="btn btn-primary btn-lg btn-block">Vote Now!</button>--}}
-                            {{--<div class="stars">--}}
-                                {{--<span class="glyphicon glyphicon-star"></span>--}}
-                                {{--<span class="glyphicon glyphicon-star"></span>--}}
-                                {{--<span class="glyphicon glyphicon-star"></span>--}}
-                                {{--<span class="glyphicon glyphicon-star"></span>--}}
-                                {{--<span class="glyphicon glyphicon-star-empty"></span>--}}
-                            {{--</div>--}}
-                            {{--<p> Average 4.1 <small> / </small> 5 </p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
+
                 </div>
             </div>
         </div>

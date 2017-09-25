@@ -15,7 +15,7 @@ class CreateOrderScedulesTable extends Migration
     {
         Schema::create('order_schedules', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('users_id');
+            $table->unsignedInteger('users_id');
             $table->index('users_id');
 
         });
