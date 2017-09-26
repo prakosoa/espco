@@ -28,8 +28,8 @@
     <script src="{{ URL::asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
     {{--<script src="{{ URL::asset('js/fullcalendar.js') }}"></script>--}}
     <!-- FullCalendar -->
-    <link rel="stylesheet" href="{{ URL::asset('plugins/fullcalendar/fullcalendar.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('plugins/fullcalendar/fullcalendar.print.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/fullcalendar.css') }}">
+{{--    <link rel="stylesheet" href="{{ URL::asset('plugins/fullcalendar/fullcalendar.print.css') }}">--}}
     <!-- Custom styling plus plugins -->
 
 </head>
@@ -55,7 +55,7 @@
     <script src="{{ URL::asset('sedna/bower_components/jquery-waypoints/lib/jquery.waypoints.min.js') }}"></script>
     <!-- FullCalendar -->
     <script src="{{ URL::asset('plugins/moment/min/moment.min.js') }}"></script>
-    <script src="{{ URL::asset('plugins/fullcalendar/fullcalendar.min.js') }}"></script>
+    <script src="{{ URL::asset('js/fullcalendar.min.js') }}"></script>
     <!-- Custom Theme Scripts -->
     <script src="{{ URL::asset('js/custom.min.js') }}"></script>
 
