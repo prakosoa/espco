@@ -13,7 +13,7 @@
 @endsection
 @section('content')
     <div class="wrapper" style="margin: 200px 100px 0px 100px;">
-<section class="content">
+        <section class="content">
 
     <div class="row">
         <div class="col-md-3">
@@ -23,25 +23,22 @@
                 <div class="box-body box-profile">
                     <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture" style="margin-left: 70px;">
 
-                    <h3 class="profile-username text-center">Entruv</h3>
+                    <h3 class="profile-username text-center">{{$coach->nickname}}</h3>
 
-                    <p class="text-muted text-center">Alex Prawira</p>
+                    <p class="text-muted text-center">{{$coach->name}}</p>
 
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
-                            <b>Rank</b> <a class="pull-right">7000</a>
+                            <b>Rank</b> <a class="pull-right">{{$coach->rank}}</a>
                         </li>
                         <li class="list-group-item">
-                            <b>Steam</b> <a class="pull-right" href="#">Entruv</a>
+                            <b>Steam</b> <a class="pull-right" href="http://{{$coach->steam}}">Go to steam</a>
                         </li>
                         <li class="list-group-item">
-                            <b>Phone</b> <a class="pull-right">082222222222</a>
+                            <b>Phone</b> <a class="pull-right">{{$coach->phone}}</a>
                         </li>
                         <li class="list-group-item">
-                            <b>Statistic</b> <a class="pull-right" href="#">Dbuff</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Fee/hr</b> <a class="pull-right" >Rp 350.000,-</a>
+                            <b>Fee/hr</b> <a class="pull-right" >{{$coach->fee}}</a>
                         </li>
                     </ul>
 
@@ -61,14 +58,9 @@
                     <strong><i class="fa fa-trophy margin-r-5"></i> Achievment</strong>
 
                     <p class="text-muted">
-                        B.S. in Computer Science from the University of Tennessee at Knoxville
+                        {{$coach->about}}
                     </p>
-
                     <hr>
-
-                    <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -86,8 +78,13 @@
                 {{--calendar--}}
 
         @include('guess.calendar')
-
-
+                <div class="row">
+                    <br>
+                    <a href="{{ url('/user/checkout')}}" class="col-md-4 col-md-offset-4"> <button type="button" class="btn btn-primary btn-lg btn-block" > Hire Now! </button></a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
     </div>
 @endsection

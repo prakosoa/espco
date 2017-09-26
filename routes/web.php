@@ -18,23 +18,17 @@
 //     return view('admin');
 // });
 
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'FrontController@index');
 Route::get('/listcoach', 'ListcoachController@index');
-Route::get('/profilecoach', 'ProfilecoachController@index');
-Route::get('/checkout', 'CheckoutController@index');
-
-Route::get('/registerc', 'RegistercoachController@index');
-
-Route::get('/editprofilecoach', 'EditprofilecoachController@index');
+Route::get('/profilecoach/{id}', 'ProfilecoachController@index');
+Route::get('/registerc', 'Auth\RegisterCoachController@index');
 Route::get('/editprofileuser', 'EditprofileuserController@index');
 Route::get('/adduser', 'AdduserController@index');
 
-Route::get('/hireadmin', 'HireadminController@index');
 
-
-Auth::routes();
 
 // admin
 Route::group(['middleware' => ['auth','admin'],'prefix'=> '/admin'], function() {
@@ -42,13 +36,17 @@ Route::group(['middleware' => ['auth','admin'],'prefix'=> '/admin'], function() 
     Route::get('/', 'AdminController@index');
     Route::get('/coachtable', 'CoachtableController@index');
     Route::get('/usertable', 'UsertableController@index');
-    Route::get('/editcoach/{id}', 'EditcoachController@index');
+    Route::get('/editcoach', 'EditcoachController@index');
     Route::get('/edituser/{id}', 'EdituserController@index');
     Route::post('/coach/edit', 'EditcoachController@editCoach');
     Route::post('/user/edit', 'EdituserController@editUser');
     Route::post('/coach/delete', 'EditcoachController@destroy');
+    Route::post('/user/delete', 'EdituserController@destroy');
     Route::get('/adduser', 'AdduserController@index');
     Route::post('/adduser/add', 'AdduserController@adduser');
+    Route::get('/hireadmin', 'HireadminController@index');
+
+
 
     // Route::group(['prefix' => '/bimbingan/skripsi'], function () {
     //     Route::get('/', 'AdminDepartemen\AdminDptController@indexBimbinganS');
@@ -70,10 +68,13 @@ Route::group(['middleware' => ['auth','admin'],'prefix'=> '/admin'], function() 
 Route::group(['middleware' => ['auth','coach'],'prefix'=> '/coach'], function() {
     
     Route::get('/', 'CoachController@index');
+    Route::get('/editprofilecoach', 'EditprofilecoachController@index');
+    Route::post('/editprofilecoach/edit', 'EditprofilecoachController@editCoach');
 });
 
 // user
-Route::group(['middleware' => ['auth','user'],'prefix'=> '/editprofileuser'], function() {
+Route::group(['middleware' => ['auth','user'],'prefix'=> '/user'], function() {
     
     Route::get('/', 'EditprofileuserController@index');
+    Route::get('/checkout', 'CheckoutController@index');
 });

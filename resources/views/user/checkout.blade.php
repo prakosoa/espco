@@ -58,58 +58,36 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <div class="col-sm-3 col-xs-3">
-                                    <img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />
+                                    {{--<img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />--}}
                                 </div>
                                 <div class="col-sm-6 col-xs-6">
                                     <div class="col-xs-12">Fear</div>
                                     <div class="col-xs-12"><small>DateTime : <span>29 Sept 17 - 20.00-21.00</span></small></div>
                                 </div>
                                 <div class="col-sm-3 col-xs-3 text-right">
-                                    <h6><span>$</span>25.00</h6>
+                                    <h6><span>Rp</span>350000</h6>
                                 </div>
                             </div>
                             <div class="form-group"><hr /></div>
-                            <div class="form-group">
-                                <div class="col-sm-3 col-xs-3">
-                                    <img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />
-                                </div>
-                                <div class="col-sm-6 col-xs-6">
-                                    <div class="col-xs-12">Product name</div>
-                                    <div class="col-xs-12"><small>Quantity:<span>1</span></small></div>
-                                </div>
-                                <div class="col-sm-3 col-xs-3 text-right">
-                                    <h6><span>$</span>25.00</h6>
-                                </div>
-                            </div>
-                            <div class="form-group"><hr /></div>
-                            <div class="form-group">
-                                <div class="col-sm-3 col-xs-3">
-                                    <img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />
-                                </div>
-                                <div class="col-sm-6 col-xs-6">
-                                    <div class="col-xs-12">Product name</div>
-                                    <div class="col-xs-12"><small>Quantity:<span>2</span></small></div>
-                                </div>
-                                <div class="col-sm-3 col-xs-3 text-right">
-                                    <h6><span>$</span>50.00</h6>
-                                </div>
-                            </div>
-                            {{--<div class="form-group"><hr /></div>--}}
                             {{--<div class="form-group">--}}
-                                {{--<div class="col-xs-12">--}}
-                                    {{--<strong>Subtotal</strong>--}}
-                                    {{--<div class="pull-right"><span>$</span><span>200.00</span></div>--}}
+                                {{--<div class="col-sm-3 col-xs-3">--}}
+                                    {{--<img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />--}}
                                 {{--</div>--}}
-                                {{--<div class="col-xs-12">--}}
-                                    {{--<small>Shipping</small>--}}
-                                    {{--<div class="pull-right"><span>-</span></div>--}}
+                                {{--<div class="col-sm-6 col-xs-6">--}}
+                                    {{--<div class="col-xs-12">Product name</div>--}}
+                                    {{--<div class="col-xs-12"><small>Quantity:<span>1</span></small></div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-sm-3 col-xs-3 text-right">--}}
+                                    {{--<h6><span>$</span>25.00</h6>--}}
                                 {{--</div>--}}
                             {{--</div>--}}
-                            <div class="form-group"><hr /></div>
+
+
+
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <strong>Order Total</strong>
-                                    <div class="pull-right"><span>$</span><span>150.00</span></div>
+                                    <div class="pull-right"><span>Rp</span><span>350000</span></div>
                                 </div>
                             </div>
                         </div>

@@ -63,29 +63,53 @@
                         <br>
                         {{--search end--}}
                 {{--<h1 class="text-center">Vote for your favorite</h1>--}}
-                <div class="list-groupds">
-                    <div href="#" class="list-group-items" style=" background: dimgrey; ">
+
+
+                        {{--@foreach($coach as $resultcoach)--}}
+                            {{--<tr>--}}
+                                {{--<td>{{$resultcoach->name}}</td>--}}
+                                {{--<td>{{$resultcoach->nickname}}</td>--}}
+                                {{--<td>{{$resultcoach->email}}</td>--}}
+                                {{--<td>{{$resultcoach->fee}}</td>--}}
+                                {{--<td>--}}
+                                    {{--<a href="{{"/notes/". $note->id. "/edit"}}" >--}}
+                                    {{--<a href="{{url('/admin/editcoach/'.$resultcoach->id)}}" >  <button type="button" class="btn btn-primary btn-s" style="margin: -1px; color: blue;"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>--}}
+                                    {{--<button id="btn-del" class="btn btn-primary btn-sm" style="margin: -1px; color: red;" data-id="{{$resultcoach->id}}" data-nama="{{$resultcoach->name}}"><i class="fa fa-trash" aria-hidden="true"></i></button>--}}
+
+                                {{--</td>--}}
+                            {{--</tr>--}}
+                        {{--@endforeach--}}
+
+                        @foreach($coach as $resultcoach)
+                <div class="list-groupds" >
+                    <div href="#" class="list-group-items" >
                         <div class="media col-md-3">
                             <figure class="pull-left">
                                 <img class="media-object img-rounded img-responsive"  src="https://cdn.dotablast.com/wp-content/uploads/2015/07/fearesl.png" alt="placehold.it/350x250" >
                             </figure>
                         </div>
                         <div class="col-md-6">
-                            <h4 class="list-group-item-heading"> Coach Name "Nick" </h4>
-                            <h5 class="list-group-item-heading"> Game </h5>
+                            <h4 class="list-group-item-heading"> {{$resultcoach->name}} <b>"{{$resultcoach->nickname}}"</b> </h4>
+                            <h5 class="list-group-item-heading">
+                                    @if($resultcoach->games_id==1)
+                                         <b>Dota2</b> Coach
+                                    @elseif ($resultcoach->games_id==2)
+                                        <b>CSGO</b> Coach
+                                    @endif
+                            </h5>
 
-                            <p class="list-group-item-text"> Qui diam libris ei, vidisse incorrupte at mel. His euismod salutandi dissentiunt eu. Habeo offendit ea mea. Nostro blandit sea ea, viris timeam molestiae an has. At nisl platonem eum.
-                                Vel et nonumy gubergren, ad has tota facilis probatus. Ea legere legimus tibique cum, sale tantas vim ea, eu vivendo expetendis vim. Voluptua vituperatoribus et mel, ius no elitr deserunt mediocrem. Mea facilisi torquatos ad.
+                            <p class="list-group-item-text"> {{$resultcoach->about}}
                             </p>
                         </div>
                         <div class="col-md-3 text-center">
-                            <h2> 350000 <small> /hr </small></h2>
-                           <a href="{{ url('profilecoach') }}"> <button type="button" class="btn btn-primary btn-lg btn-block" > Hire Now! </button></a>
-                            <p><b>Rank :</b>  <small>  </small> <b>7000</b> </p>
+                            <h3> Rp {{$resultcoach->fee}} <small> /hr </small></h3>
+                           <a href="{{ url('profilecoach/'.$resultcoach->id)}}"> <button type="button" class="btn btn-primary btn-lg btn-block" > Hire Now! </button></a>
+                            <p><b>Rank :</b>  <small>  </small> <b>{{$resultcoach->rank}}</b> </p>
                         </div>
                     </div>
-
                 </div>
+
+                        @endforeach
             </div>
         </div>
     </div>

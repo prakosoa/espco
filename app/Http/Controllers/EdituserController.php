@@ -22,4 +22,12 @@ class EdituserController extends Controller
 
         return redirect('/admin/usertable');
     }
+    public function destroy(Request $request){
+
+//        return $request->all();
+        $user = User::find($request->id);
+        $user->delete();
+
+        return redirect('/admin/usertable');
+    }
 }

@@ -8,7 +8,7 @@
         <section class="content">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Data Coach</h3>
+                <h3 class="box-title">Coach</h3>
                 <br>
                 <a href="{{"adduser"}}" > <button type="button" class="btn bg-olive margin"><i class="fa fa-plus" aria-hidden="true"></i> Add</button></a>
             </div>

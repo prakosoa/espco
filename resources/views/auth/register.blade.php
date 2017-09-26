@@ -13,6 +13,7 @@
 
     <form action="{{ route('register') }}" method="POST">
     {{ csrf_field() }}
+        <input type="hidden" name="level" value="3">
         <div class="form-group has-feedback {{ $errors->has('name') ? ' has-error' : '' }}">
             <input type="text" class="form-control" id="name" name="name" placeholder="Full name" value="{{ old('name') }}" required autofocus>
             @if ($errors->has('name'))
@@ -62,16 +63,7 @@
             <!-- /.col -->
         </div>
     </form>
-
-    {{--<div class="social-auth-links text-center">--}}
-        {{--<p>- OR -</p>--}}
-        {{--<a href="#" class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign up using--}}
-            {{--Facebook</a>--}}
-        {{--<a href="#" class="btn btn-block btn-social btn-google"><i class="fa fa-google-plus"></i> Sign up using--}}
-            {{--Google+</a>--}}
-    {{--</div>--}}
-
-    <a href="login.html" class="text-center">I already have a membership</a>
+    <a href="{{('login')}}" class="text-center">I already have a membership</a>
 </div>
 </div>
 

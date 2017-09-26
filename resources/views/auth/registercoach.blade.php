@@ -7,9 +7,9 @@
 
     <div class="register-box-body">
         <p class="login-box-msg">Register a new membership</p>
-        <form action="{{ route('register') }}" method="POST">
+        <form action="{{ route('register') }}" method="post">
             {{ csrf_field() }}
-        <form action="{{ route('registerc') }}" method="post">
+            <input type="hidden" name="level" value="2">
             <div class="form-group has-feedback {{ $errors->has('name') ? ' has-error' : '' }}">
                 <input type="text" class="form-control" id="name" name="name" placeholder="Full name" value="{{ old('name') }}" required autofocus>
                 @if ($errors->has('name'))
