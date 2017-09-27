@@ -29,6 +29,7 @@
     {{--<script src="{{ URL::asset('js/fullcalendar.js') }}"></script>--}}
     <!-- FullCalendar -->
     <link rel="stylesheet" href="{{ URL::asset('css/fullcalendar.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/espco.css') }}">
 {{--    <link rel="stylesheet" href="{{ URL::asset('plugins/fullcalendar/fullcalendar.print.css') }}">--}}
     <!-- Custom styling plus plugins -->
 

@@ -4,58 +4,69 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modal-time">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button id="add-hire-time" type="button" class="btn btn-default">Hire</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 <script>
 
     $(document).ready(function() {
+        var listTimes = [];
 
         $('#calendar').fullCalendar({
             selectable: true,
-            defaultDate: '2014-06-12',
+            editable: false,
+            defaultDate: moment().format(),
             defaultView: 'agendaWeek',
             slotMinutes: 60,
-            dayClick: function(date, jsEvent, view) {
+            dayRender: function(date, cell) {
                 console.log(date.format());
             },
-            editable: true,
-            events: [
-                {
-                    title: 'All Day Event',
-                    start: '2014-06-01'
-                },
-                {
-                    title: 'Long Event',
-                    start: '2014-06-07',
-                    end: '2014-06-10'
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: '2014-06-09T16:00:00'
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: '2014-06-16T16:00:00'
-                },
-                {
-                    title: 'Meeting',
-                    start: '2014-06-12T10:30:00',
-                    end: '2014-06-12T12:30:00'
-                },
-                {
-                    title: 'Lunch',
-                    start: '2014-06-12T12:00:00'
-                },
-                {
-                    title: 'Birthday Party',
-                    start: '2014-06-13T07:00:00'
-                },
-                {
-                    title: 'Click for Google',
-                    url: 'http://google.com/',
-                    start: '2014-06-28'
+            select: function(start, end) {
+                if(start.isBefore(moment())) {
+                    $('#calendar').fullCalendar('unselect');
+                    return false;
                 }
-            ]
+                $("#myModal").modal();
+                $(".modal-time").html(start.format());
+            },
+            events: [],
+            eventOverlap: false
+        });
+
+        $("#add-hire-time").click(function(){
+            var timeValue = $(".modal-time").html();
+            listTimes.push(timeValue);
+            var newEvent = new Object();
+            newEvent.title = "abc";
+            var dateObj = new Date(timeValue);
+            var momentObj = moment(dateObj);
+            newEvent.start = momentObj.format();
+            newEvent.end = momentObj.add(1,'hours').format();
+            newEvent.allDay = false;
+            console.log(timeValue);
+            console.log(momentObj.format());
+            $('#calendar').fullCalendar('renderEvent', newEvent);
+            $("#myModal").modal('hide');
         });
 
     });
