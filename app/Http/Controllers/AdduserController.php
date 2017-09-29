@@ -12,7 +12,7 @@ class AdduserController extends Controller
     }
 
     public function adduser(Request $request){
-
+        
         $this->validate($request,[
 //            'username'=> 'required|unique:users',
             'email' => 'required|email',
@@ -32,6 +32,7 @@ class AdduserController extends Controller
         $user->phone = $request->phonee;
         $user->steam = $request->steamm;
         $user->rank = $request->rankk;
+//        $user->games_id = $request->game;
         $user->fee = $request->feee;
         $user->save();
 

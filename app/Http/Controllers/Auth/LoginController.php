@@ -30,6 +30,8 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {if($user->level==1){
         return redirect('/admin');
+    }elseif($user->level==2){
+        return redirect('/coach/editprofilecoach');
     }
     return redirect('/');
     }

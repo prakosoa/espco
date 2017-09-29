@@ -30,34 +30,21 @@
                 <div class="row" >
                     <div class="welll" >
                         {{--search--}}
-
-
-                        <div class="container">
-                            <div class="row searchFilter" >
-                                <div class="col-sm-12" >
-                                    <div class="input-group" >
-                                        <input id="table_filter" type="text" class="form-control" aria-label="Text input with segmented button dropdown" >
-                                        <div class="input-group-btn" >
-                                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span class="label-icon" >Category</span> <span class="caret" >&nbsp;</span></button>
-                                            <div class="dropdown-menu dropdown-menu-right" >
-                                                <ul class="category_filters" >
-                                                    <li >
-                                                        <input class="cat_type category-input" data-label="All" id="all" value="" name="radios" type="radio" ><label for="all" >All</label>
-                                                    </li>
-                                                    <li >
-                                                        <input type="radio" name="radios" id="Design" value="1" ><label class="category-label" for="Dota2" >Dota2</label>
-                                                    </li>
-                                                    <li >
-                                                        <input type="radio" name="radios" id="Marketing" value="2" ><label class="category-label" for="CSGO" >CSGO</label>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <button id="searchBtn" type="button" class="btn btn-secondary btn-search" ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Search</span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <input type="text" class="form-control" placeholder="Enter ...">
                         </div>
+                        <div class="form-group col-md-3">
+                            <select class="form-control" >
+                                <option>option 1</option>
+                                <option>option 2</option>
+                                <option>option 3</option>
+                                <option>option 4</option>
+                                <option>option 5</option>
+                            </select>
+                        </div>
+                    </div>
+              
                         <br>
                         <br>
                         <br>
@@ -80,7 +67,7 @@
                             {{--</tr>--}}
                         {{--@endforeach--}}
 
-                        @foreach($coach as $resultcoach)
+                @foreach($coach as $resultcoach)
                 <div class="list-groupds" >
                     <div href="#" class="list-group-items" >
                         <div class="media col-md-3">

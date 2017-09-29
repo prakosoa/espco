@@ -25,7 +25,8 @@ Route::get('/', 'FrontController@index');
 Route::get('/listcoach', 'ListcoachController@index');
 Route::get('/profilecoach/{id}', 'ProfilecoachController@index');
 Route::get('/registerc', 'Auth\RegisterCoachController@index');
-Route::get('/editprofileuser', 'EditprofileuserController@index');
+Route::post('/registerc/regist', 'Auth\RegisterCoachController@regist');
+
 Route::get('/adduser', 'AdduserController@index');
 
 
@@ -36,7 +37,7 @@ Route::group(['middleware' => ['auth','admin'],'prefix'=> '/admin'], function() 
     Route::get('/', 'AdminController@index');
     Route::get('/coachtable', 'CoachtableController@index');
     Route::get('/usertable', 'UsertableController@index');
-    Route::get('/editcoach', 'EditcoachController@index');
+    Route::get('/editcoach/{id}', 'EditcoachController@index');
     Route::get('/edituser/{id}', 'EdituserController@index');
     Route::post('/coach/edit', 'EditcoachController@editCoach');
     Route::post('/user/edit', 'EdituserController@editUser');
@@ -66,10 +67,12 @@ Route::group(['middleware' => ['auth','admin'],'prefix'=> '/admin'], function() 
 
 // coach
 Route::group(['middleware' => ['auth','coach'],'prefix'=> '/coach'], function() {
-    
+
     Route::get('/', 'CoachController@index');
     Route::get('/editprofilecoach', 'EditprofilecoachController@index');
-    Route::post('/editprofilecoach/edit', 'EditprofilecoachController@editCoach');
+    Route::get('/schedules', 'ScheduleController@index');
+    Route::get('/hirecoach', 'HirecoachController@index');
+    // Route::post('/editprofilecoach/edit', 'EditprofilecoachController@editCoach');
 });
 
 // user
@@ -77,4 +80,9 @@ Route::group(['middleware' => ['auth','user'],'prefix'=> '/user'], function() {
     
     Route::get('/', 'EditprofileuserController@index');
     Route::get('/checkout', 'CheckoutController@index');
+    Route::get('/editprofileuser', 'EditprofileuserController@index');
+    Route::get('/hireuser', 'HireuserController@index');
+    Route::post('/editprofileuser/edit', 'EditprofileuserController@editUser');
+//    Route::post('/editprofileuser', 'EditprofileuserController@index');
+//    Route::post('/editprofileuser/edit', 'EditprofileuserController@editUser');
 });

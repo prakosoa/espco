@@ -29,7 +29,7 @@
                                         <a href="coach/editprofilecoach" style="color: red;">Profile
                                         </a>
                                     @elseif (Auth::user()->level == 3)
-                                        <a href="/editprofileuser" style="color: red;">Profile
+                                        <a href="user/editprofileuser" style="color: red;">Profile
                                         </a>
                                     @endif
                                 </li>

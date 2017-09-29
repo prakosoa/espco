@@ -54,13 +54,13 @@
                     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Fee" name="feee" value="{{$coach->fee}}">
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="exampleInputFile">Photo</label>
                     <input type="text" readonly="" class="form-control" placeholder="Browse...">
                     <input type="file" id="exampleInputFile">
 
                     <p class="help-block">Example block-level help text here.</p>
-                </div>
+                </div> -->
 
             </div>
             <!-- /.box-body -->

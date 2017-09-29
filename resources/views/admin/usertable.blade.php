@@ -29,7 +29,7 @@
                             <tr>
                                 <td>{{$resultuser->name}}</td>
                                 <td>{{$resultuser->email}}</td>
-                                <td>{{$resultuser->phone}}}</td>
+                                <td>{{$resultuser->phone}}</td>
                                 <td>{{$resultuser->steam}}</td>
                                 <td>
                                     {{--<a href="{{"/notes/". $note->id. "/edit"}}" >--}}

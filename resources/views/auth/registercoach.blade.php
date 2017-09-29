@@ -7,7 +7,7 @@
 
     <div class="register-box-body">
         <p class="login-box-msg">Register a new membership</p>
-        <form action="{{ route('register') }}" method="post">
+        <form action="{{ url('/registerc/regist') }}" method="post">
             {{ csrf_field() }}
             <input type="hidden" name="level" value="2">
             <div class="form-group has-feedback {{ $errors->has('name') ? ' has-error' : '' }}">
@@ -32,44 +32,43 @@
             </div>
             <div class="form-group has-feedback {{ $errors->has('password') ? ' has-error' : '' }}">
                 <input type="password" class="form-control" placeholder="Password" id="password" name="password" required>
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 @if ($errors->has('password'))
                     <span class="help-block">
                     <strong>{{ $errors->first('password') }}</strong>
                 </span>
                 @endif
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" placeholder="Retype password" id="password-confirm" name="password_confirmation">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Retype password"  id="password-confirm" name="password_confirmation" required>
-
-                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Retype password">
-                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input type="text" class="form-control" placeholder="Steam Link">
+                <input type="text" class="form-control" placeholder="Steam Link" id="steam" name="steam" required>
                 <span class="fa fa-steam form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" placeholder="Nick">
+                <input type="text" class="form-control" placeholder="Nick" id="nickname" name="nickname" required>
                 <span class="fa fa-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <select class="form-control select2" style="width: 100%;">
-                    <option selected="selected"  disabled="disabled"><b>Select Game</b></option>
-                    <option>Dota2</option>
-                    <option>CS:GO</option>
+                <select class="form-control select2" name="game" style="width: 100%;" require>
+                    <option value="" selected="selected"  disabled="disabled"><b>Select Game</b></option>
+                    <option value="1" name="games_id" id="game">Dota2</option>
+                    <option value="2" name="games_id" id="game">CS:GO</option>
                 </select>
                 <span class="fa fa-gamepad form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" placeholder="Phone Number">
+                <input type="number" class="form-control" placeholder="Rank" name="rank" required>
+                <span class=" form-control-feedback"><b>Rp</b></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" placeholder="Phone Number" name="phone" required>
                 <span class="fa fa-phone form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="number" class="form-control" placeholder="Fee/hr">
+                <input type="number" class="form-control" placeholder="Fee/hr" name="fee" required>
                 <span class=" form-control-feedback"><b>Rp</b></span>
             </div>
 

@@ -61,7 +61,7 @@
       {{----}}
       {{--Hire Payment--}}
       <li>
-      <a href="{{url('hireadmin')}}">
+      <a href="{{url('/admin/hireadmin')}}">
       <i class="fa fa-shopping-cart"></i> <span>Hire</span>
       <span class="pull-right-container">
       {{--<small class="label pull-right bg-green">Hot</small>--}}
@@ -77,7 +77,7 @@
         </a>
       </li>
     <li>
-      <a href="../widgets.html">
+      <a href="{{ url('/coach/schedules/') }}">
         <i class="fa fa-calendar"></i> <span>Schedule</span>
         <span class="pull-right-container">
       {{--<small class="label pull-right bg-green">Hot</small>--}}
@@ -86,7 +86,7 @@
     </li>
       {{--Lesson--}}
     <li>
-      <a href="../widgets.html">
+      <a href="{{ url('/coach/hirecoach') }}">
         <i class="fa fa-book"></i> <span>Hire</span>
         <span class="pull-right-container">
       {{--<small class="label pull-right bg-green">Hot</small>--}}
@@ -97,7 +97,7 @@
       @elseif(Auth::user()->level==3)
       {{--Myprofil--}}
       <li>
-        <a href="/editprofileuser">
+        <a href="/user/editprofileuser">
           <i class="fa fa-user"></i> <span>My Profile</span>
           <span class="pull-right-container">
       {{--<small class="label pull-right bg-green">Hot</small>--}}
@@ -107,7 +107,7 @@
 
       {{--Lesson--}}
       <li>
-        <a href="../widgets.html">
+        <a href="{{ url('/user/hireuser') }}">
           <i class="fa fa-book"></i> <span>Hire</span>
           <span class="pull-right-container">
       {{--<small class="label pull-right bg-green">Hot</small>--}}

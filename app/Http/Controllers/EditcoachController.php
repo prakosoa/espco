@@ -12,17 +12,14 @@ class EditcoachController extends Controller
     }
     public function editCoach(Request $request){
 //        $this->validate($request)
-//        return $request->all();
+    //    return $request->all();
 
         $this->validate($request,[
 //            'username'=> 'required|unique:users',
-            'email' => 'required|email|unique:users',
-            'nama' => 'required',
-            'password'=>'required|min:6|confirmed',
-            'phone'=>'required',
-            'rank'=>'required',
-            'steam'=>'required',
-            'fee'=>'required',
+            // 'email' => 'required|email|unique:users',
+            // 'nama' => 'required',
+            // 'password'=>'required|min:6|confirmed',
+
 
 //            'gender' => 'required',
 //            'tgl_lahir' => 'required',
@@ -32,8 +29,8 @@ class EditcoachController extends Controller
         ]);
         $coach = User::find($request->id);
         $coach->name = $request->nama;
-        $coach->nickname = $request->nicknamee;
         $coach->email = $request->emaill;
+        $coach->nickname = $request->nicknamee;
         $coach->phone = $request->phonee;
         $coach->steam = $request->steamm;
         $coach->rank = $request->rankk;
