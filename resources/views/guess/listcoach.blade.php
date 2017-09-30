@@ -49,23 +49,7 @@
                         <br>
                         <br>
                         {{--search end--}}
-                {{--<h1 class="text-center">Vote for your favorite</h1>--}}
 
-
-                        {{--@foreach($coach as $resultcoach)--}}
-                            {{--<tr>--}}
-                                {{--<td>{{$resultcoach->name}}</td>--}}
-                                {{--<td>{{$resultcoach->nickname}}</td>--}}
-                                {{--<td>{{$resultcoach->email}}</td>--}}
-                                {{--<td>{{$resultcoach->fee}}</td>--}}
-                                {{--<td>--}}
-                                    {{--<a href="{{"/notes/". $note->id. "/edit"}}" >--}}
-                                    {{--<a href="{{url('/admin/editcoach/'.$resultcoach->id)}}" >  <button type="button" class="btn btn-primary btn-s" style="margin: -1px; color: blue;"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>--}}
-                                    {{--<button id="btn-del" class="btn btn-primary btn-sm" style="margin: -1px; color: red;" data-id="{{$resultcoach->id}}" data-nama="{{$resultcoach->name}}"><i class="fa fa-trash" aria-hidden="true"></i></button>--}}
-
-                                {{--</td>--}}
-                            {{--</tr>--}}
-                        {{--@endforeach--}}
 
                 @foreach($coach as $resultcoach)
                 <div class="list-groupds" >

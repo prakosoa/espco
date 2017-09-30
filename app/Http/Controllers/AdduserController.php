@@ -32,7 +32,7 @@ class AdduserController extends Controller
         $user->phone = $request->phonee;
         $user->steam = $request->steamm;
         $user->rank = $request->rankk;
-//        $user->games_id = $request->game;
+         $user->games_id = $request->games_id;    
         $user->fee = $request->feee;
         $user->save();
 

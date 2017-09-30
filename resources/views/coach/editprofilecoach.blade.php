@@ -26,7 +26,7 @@
                     <!-- Profile Image -->
                     <div class="box box-primary">
                         <div class="box-body box-profile">
-                            <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+                            <img class="profile-user-img img-responsive img-circle" src="{{asset(Auth::user()->photo)}}" alt="User profile picture">
 
                             <h3 class="profile-username text-center">{{ Auth::user()->nickname }}</h3>
 
@@ -88,56 +88,56 @@
                                         <label for="inputName" class="col-sm-2 control-label">Name</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputName" placeholder="Name" name="nama" value="{{ Auth::user()->name }}">
+                                            <input type="text" class="form-control" id="inputName" placeholder="Name" name="name" value="{{ Auth::user()->name }}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail" class="col-sm-2 control-label">Email</label>
 
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="emaill" value="{{ Auth::user()->email}}">
+                                            <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="{{ Auth::user()->email}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName" class="col-sm-2 control-label">Password</label>
 
                                         <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="inputName" placeholder="Password" name="password" value="{{ Auth::user()->password }}">
+                                            <input type="password" class="form-control" id="inputName" placeholder="Password" name="password" value="">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputNickname" class="col-sm-2 control-label">Nickname</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputNickname" placeholder="Nickname" name="nicknamee" value="{{ Auth::user()->nickname }}">
+                                            <input type="text" class="form-control" id="inputNickname" placeholder="Nickname" name="nickname" value="{{ Auth::user()->nickname }}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputPhone" placeholder="Phone" name="phonee" value="{{ Auth::user()->phone }}">
+                                            <input type="text" class="form-control" id="inputPhone" placeholder="Phone" name="phone" value="{{ Auth::user()->phone }}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputSteam" class="col-sm-2 control-label">Steam</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputName" placeholder="Steam Link" name="steamm" value="{{ Auth::user()->steam }}">
+                                            <input type="text" class="form-control" id="inputName" placeholder="Steam Link" name="steam" value="{{ Auth::user()->steam }}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputRank" class="col-sm-2 control-label">Rank</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputName" placeholder="Rank" name="rankk" value="{{ Auth::user()->rank }}">
+                                            <input type="text" class="form-control" id="inputName" placeholder="Rank" name="rank" value="{{ Auth::user()->rank }}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputGame" class="col-sm-2 control-label">Game</label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control select2" style="width: 100%;">
+                                            <select name ="games_id" class="form-control select2" style="width: 100%;">
                                                 <option value="" selected="selected"  disabled="disabled"><b>Select Game</b></option>
                                                 <option value="1">Dota2</option>
                                                 <option value="2">CS:GO</option>
@@ -148,25 +148,28 @@
                                         <label for="inputFee" class="col-sm-2 control-label">Fee</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputName" placeholder="Fee" name="feee" value="{{ Auth::user()->fee }}">
+                                            <input type="text" class="form-control" id="inputName" placeholder="Fee" name="fee" value="{{ Auth::user()->fee }}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputExperience" class="col-sm-2 control-label">About Me</label>
 
                                         <div class="col-sm-10">
-                                            <textarea class="form-control" id="inputExperience" placeholder="About Me" name="aboutme" >{{ Auth::user()->about }}</textarea>
+                                            <textarea class="form-control" id="inputExperience" placeholder="About Me" name="about" >{{ Auth::user()->about }}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputExperience" class="col-sm-2 control-label">Photo</label>
-                                        <div class="col-sm-10">
-                                        <input type="text" readonly="" class="form-control" placeholder="Browse...">
-                                        <input type="file" id="exampleInputFile">
+                                        <div class="col-sm-8">
+                                            <input type="text" readonly="" class="form-control" placeholder="Browse...">
+                                            <input type="file" id="imgInp" name="image" require value="{{asset(Auth::user()->photo)}}">
                                         </div>
-
+                                        <div class="col-sm-2">
+                                            <img src="{{asset(Auth::user()->photo)}}" id="blah" alt="default" style="width:100px; height:100px;">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
+
+                                    <!-- <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
                                             <div class="checkbox">
                                                 <label>
@@ -174,7 +177,7 @@
                                                 </label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
                                             <button type="submit" class="btn btn-danger">Submit</button>
@@ -198,5 +201,21 @@
 @endsection
 
 @section('js')
-
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#imgInp").change(function(){
+        readURL(this);
+    });
+</script>
 @endsection

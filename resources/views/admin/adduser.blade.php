@@ -61,10 +61,10 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Games</label>
-                            <select class="form-control select2" style="width: 100%;" >
+                            <select name="games_id" class="form-control select2" style="width: 100%;" >
                                 <option value="" selected="selected" ><b>Select Game</b></option>
-                                <option name="game" value="1">Dota2</option>
-                                <option name="game" value="2">CS:GO</option>
+                                <option value="1">Dota2</option>
+                                <option value="2">CS:GO</option>
                             </select>
                         </div>
                         <div class="form-group">

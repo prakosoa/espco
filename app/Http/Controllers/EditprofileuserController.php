@@ -9,16 +9,13 @@ use Storage;
 
 class EditprofileuserController extends Controller
 {
-    public function index()
-    {
-
-        // return $c = 'public'.substr('storage/photo-profil/photo-default.jpg', 7);
+    public function index(){
         Auth::user()->id;
         return view('user.editprofileuser');
     }
     public function editUser(Request $request){
         $this->validate($request,[
-            'phonee'=> 'required|numeric|min:10',
+            // 'phonee'=> 'required|numeric|min:10',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:7168|dimensions:max_height=1300',
         ]);
 

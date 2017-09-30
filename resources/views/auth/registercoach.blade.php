@@ -60,8 +60,8 @@
                 <span class="fa fa-gamepad form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="number" class="form-control" placeholder="Rank" name="rank" required>
-                <span class=" form-control-feedback"><b>Rp</b></span>
+                <input type="text" class="form-control" placeholder="Rank" name="rank" required>
+                <span class="fa fa-star form-control-feedback"><b></b></span>
             </div>
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" placeholder="Phone Number" name="phone" required>
