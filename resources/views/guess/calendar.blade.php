@@ -38,9 +38,6 @@
             defaultDate: moment().format(),
             defaultView: 'agendaWeek',
             slotMinutes: 60,
-            dayRender: function(date, cell) {
-                console.log(date.format());
-            },
             select: function(start, end) {
                 if(start.isBefore(moment())) {
                     $('#calendar').fullCalendar('unselect');
@@ -63,10 +60,9 @@
             newEvent.start = momentObj.format();
             newEvent.end = momentObj.add(1,'hours').format();
             newEvent.allDay = false;
-            console.log(timeValue);
-            console.log(momentObj.format());
             $('#calendar').fullCalendar('renderEvent', newEvent);
             $("#myModal").modal('hide');
+            $('#ordered-schedule').val(listTimes);
         });
 
     });

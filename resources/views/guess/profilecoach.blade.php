@@ -80,7 +80,13 @@
         @include('guess.calendar')
                 <div class="row">
                     <br>
-                    <a href="{{ url('/user/checkout')}}" class="col-md-4 col-md-offset-4"> <button type="button" class="btn btn-primary btn-lg btn-block" > Hire Now! </button></a>
+                    <form action="{{ route('user.hirecoach')}}" method="POST">
+                        {{csrf_field()}}
+                        <input id="ordered-schedule" type="hidden" name="ordered_schedule"/>
+                        <input name="coach_id" type="hidden" value="{{$coach->id}}"/>
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Hire Now!" />
+                    </form>
+
                 </div>
             </div>
         </div>

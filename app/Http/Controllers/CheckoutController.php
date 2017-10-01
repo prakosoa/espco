@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrderSchedule;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
-    public function index()
+    public function show($id)
     {
-        return view('user.checkout');
+        $order = OrderSchedule::findorFail($id);
+        return view('user.checkout', [
+            'order' => $order
+        ]);
     }
 }

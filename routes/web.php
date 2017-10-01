@@ -79,8 +79,9 @@ Route::group(['middleware' => ['auth','coach'],'prefix'=> '/coach'], function() 
 Route::group(['middleware' => ['auth','user'],'prefix'=> '/user'], function() {
     
     Route::get('/', 'EditprofileuserController@index');
-    Route::get('/checkout', 'CheckoutController@index');
+    Route::get('/checkout/{id}', 'CheckoutController@show')->name('user.checkout');
     Route::get('/editprofileuser', 'EditprofileuserController@index');
     Route::get('/hireuser', 'HireuserController@index');
     Route::post('/editprofileuser/edit', 'EditprofileuserController@editUser');
+    Route::post('/hirecoach', 'ProfilecoachController@hireCoach')->name('user.hirecoach');
 });
