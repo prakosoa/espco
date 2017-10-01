@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="box-body">
-          Start creating your amazing application!
+          @include('coach.calendar')
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
