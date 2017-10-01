@@ -27,6 +27,7 @@ Route::get('/profilecoach/{id}', 'ProfilecoachController@index');
 Route::get('/registerc', 'Auth\RegisterCoachController@index');
 Route::post('/registerc/regist', 'Auth\RegisterCoachController@regist');
 Route::get('/adduser', 'AdduserController@index');
+Route::get('/invoice', 'InvoiceController@index');
 
 
 
