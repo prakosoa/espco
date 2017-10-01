@@ -16,4 +16,8 @@ class Schedule extends Model
         'id'
     ];
 
+    public function coach(){
+        return $this->belongsTo('App\User', 'coach_id');
+    }
+
 }

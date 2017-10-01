@@ -45,7 +45,8 @@
             </div>
         </div>
         <div class="row cart-body">
-            <form class="form-horizontal" method="post" action="">
+            <form class="form-horizontal" method="post" action="{{route('user.checkout-post')}}">
+                {{csrf_field()}}
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
                     <!--REVIEW ORDER-->
                     <div class="panel panel-info">
@@ -53,23 +54,32 @@
                             Review Order <div class="pull-right"><small><a class="afix-1" href="#"></a></small></div>
                         </div>
                         <div class="panel-body">
-                            <div class="form-group">
-                                <div class="col-sm-3 col-xs-3">
-                                    {{--<img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />--}}
+                            @php
+                                $totalFee = 0;
+                            @endphp
+                            @foreach($order->schedules as $schedule)
+                                <div class="form-group">
+                                    <div class="col-sm-3 col-xs-3">
+                                        {{--<img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />--}}
+                                    </div>
+                                    <div class="col-sm-6 col-xs-6">
+                                        <div class="col-xs-12">{{$schedule->coach->name}}</div>
+                                        <div class="col-xs-12"><small>DateTime : <span>{{Carbon\Carbon::parse($schedule->datetime)->toFormattedDateString()}}</span></small></div>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-3 text-right">
+                                        <h6><span>Rp</span>{{$schedule->coach->fee}}</h6>
+                                        @php
+                                            $totalFee = $totalFee + $schedule->coach->fee;
+                                        @endphp
+                                    </div>
                                 </div>
-                                <div class="col-sm-6 col-xs-6">
-                                    <div class="col-xs-12">Fear</div>
-                                    <div class="col-xs-12"><small>DateTime : <span>29 Sept 17 - 20.00-21.00</span></small></div>
-                                </div>
-                                <div class="col-sm-3 col-xs-3 text-right">
-                                    <h6><span>Rp</span>350000</h6>
-                                </div>
-                            </div>
-                            <div class="form-group"><hr /></div>
+                                <div class="form-group"><hr /></div>
+                            @endforeach
+
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <strong>Order Total</strong>
-                                    <div class="pull-right"><span>Rp</span><span>350000</span></div>
+                                    <div class="pull-right"><span>Rp</span><span>{{number_format($totalFee, 2)}}</span></div>
                                 </div>
                             </div>
                         </div>
@@ -102,10 +112,11 @@
                                 <div class="col-md-12"><strong>Note : </strong>Please transfer to the following bank account </div>
                                 <div class="col-md-12"><strong>BC* : 021222222 - Esports Coach </strong></div>
                             </div>
-
+                            <input type="hidden" name="total_fee" value="{{$totalFee}}">
+                            <input type="hidden" name="order_schedule_id" value="{{$order->id}}"/>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <button type="submit" class="btn btn-primary btn-submit-fix">Place Order</button>
+                                    <input type="submit" class="btn btn-primary btn-submit-fix" value="Place Order">
                                 </div>
                             </div>
                         </div>

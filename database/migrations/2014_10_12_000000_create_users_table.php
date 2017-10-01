@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->text('steam')->nullable();
             $table->string('rank')->nullable();
             $table->unsignedInteger('games_id')->nullable();
-            $table->decimal('fee')->nullable();
+            $table->integer('fee')->nullable();
             $table->text('about')->nullable();
             $table->text('photo')->nullable();
             $table->index('games_id');

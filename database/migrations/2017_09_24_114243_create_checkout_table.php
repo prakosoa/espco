@@ -19,7 +19,7 @@ class CreateCheckoutTable extends Migration
             $table->string('bank_number');
             $table->string('bank_name');
             $table->string('phone');
-            $table->decimal('total_fee');
+            $table->integer('total_fee');
             $table->integer('status');
             $table->timestamps();
             $table->index('order_schedules_id');

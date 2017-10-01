@@ -17,6 +17,10 @@ class OrderSchedule extends Model
     ];
 
     public function schedules(){
-        $this->hasMany('App\Models\Schedule');
+        return $this->hasMany('App\Models\Schedule', 'order_schedules_id');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\User', 'users_id');
     }
 }
