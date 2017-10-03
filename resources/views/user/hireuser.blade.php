@@ -18,7 +18,6 @@
                         <thead>
                         <tr>
                             <th>Invoice</th>
-                            <th>Date time</th>
                             <th>Coach</th>
                             <th>Email</th>
                             <th>Fee</th>
@@ -30,7 +29,6 @@
                         @foreach($order as $resultorder)
                             <tr>
                                 <td>{{$resultorder->id}}</td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td>{{$resultorder->total_fee}}</td>

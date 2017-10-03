@@ -29,34 +29,37 @@
             <div class="container" style="margin-top: 150px;padding: 0 50px 50px 50px;">
                 <div class="row" >
                     <div class="welll" >
-                        {{--search--}}
-                    <div class="row">
-                        <div class="form-group col-md-3">
-                            <input type="text" class="form-control" placeholder="Enter ...">
+                    <form method="get" action="{{url('/listcoach/search')}}" >
+                    {{csrf_field()}}
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <input type="text" class="form-control" name="coachname" placeholder="Enter Coach Name">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <select class="form-control" name="games">
+                                    <option value="">Select Games</option>
+                                    <option value="1">Dota2</option>
+                                    <option value="2">CSGO </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                            <button type="submit" class="btn bg-navy margin">Search</button>
+                            </div>
+
                         </div>
-                        <div class="form-group col-md-3">
-                            <select class="form-control" >
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                            </select>
-                        </div>
-                    </div>
-              
+                    </form>
                         <br>
                         <br>
                         <br>
                         {{--search end--}}
 
 
-                @foreach($coach as $resultcoach)
+                @forelse($coach as $resultcoach)
                 <div class="list-groupds" >
                     <div href="#" class="list-group-items" >
                         <div class="media col-md-3">
                             <figure class="pull-left">
-                                <img class="media-object img-rounded img-responsive"  src="https://cdn.dotablast.com/wp-content/uploads/2015/07/fearesl.png" alt="placehold.it/350x250" >
+                                <img class="media-object img-rounded img-responsive"  src="{{Asset($resultcoach->photo)}}" alt="placehold.it/350x250" style="width:250px; height:130px" >
                             </figure>
                         </div>
                         <div class="col-md-6">
@@ -79,9 +82,13 @@
                         </div>
                     </div>
                 </div>
-
-                        @endforeach
+            @empty
+                <p Style="text-align:center;">No data found</p>
+            @endforelse
             </div>
+        </div>
+        <div style="text-align: center;">
+            {{ $coach->links() }}
         </div>
     </div>
     </div>

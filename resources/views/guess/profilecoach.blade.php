@@ -55,7 +55,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <strong><i class="fa fa-trophy margin-r-5"></i> Achievment</strong>
+                    <!-- <strong><i class="fa fa-trophy margin-r-5"></i> Achievment</strong> -->
 
                     <p class="text-muted">
                         {{$coach->about}}

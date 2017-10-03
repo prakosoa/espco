@@ -31,8 +31,13 @@
                             <tr>
                                 <td>{{$resultorder->id}}</td>
                                 <td>{{$resultorder->bank_number}}</td>
-                                <td></td>
-                                <td></td>
+                                <?php 
+                                $user = \App\User::join('order_schedules as os','users_id','users.id')->where('os.id',$resultorder->order_schedules_id)->first();
+                                $coach = \App\User::join('schedules as sch','coach_id','users.id')->where('sch.id',$resultorder->order_schedules_id)->first(); 
+                                ?>
+
+                                <td>@if($user!=''){{$user->name}}@endif</td>
+                                <td>@if($coach!=''){{$coach->name}}@else - @endif</td>
                                 <td>{{$resultorder->total_fee}}</td>
                                 <td>
                                 @if($resultorder->status==1)
@@ -67,10 +72,8 @@
                 <!-- /.box-body -->
             </div>
 
-
-
             {{--modal delete--}}
-
+            
             <div class="modal fade" id="modal-del">
                 <div class="modal-warning">
                     <div class="modal-dialog modal-sm">
@@ -116,7 +119,7 @@
                 <div class="modal-body">
                     <!-- <p>bagian body modal.</p> -->
 
-                                 <button class=btn > <span class="label label-warning">Pending</span> </button>
+                                 <button class=btn> <span class="label label-warning">Pending</span> </button>
                                <button class=btn ><span class="label label-primary">Paid</span></button>
                                 
                                

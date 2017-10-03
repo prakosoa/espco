@@ -26,7 +26,7 @@
                     <!-- Profile Image -->
                     <div class="box box-primary">
                         <div class="box-body box-profile">
-                            <img class="profile-user-img img-responsive img-circle" src="{{asset(Auth::user()->photo)}}" alt="User profile picture">
+                            <img class="profile-user-img img-responsive img-circle" src="{{asset(Auth::user()->photo)}}" alt="User profile picture" style="width:100px; height:100px;">
 
                             <h3 class="profile-username text-center">{{ Auth::user()->nickname }}</h3>
 
@@ -81,7 +81,7 @@
                         <div class="tab-content">
 
                             <div id="settings">
-                                <form class="form-horizontal" method="post" action="{{url('coach/editprofilecoach/edit')}}">
+                                <form class="form-horizontal" method="post" action="{{url('coach/editprofilecoach/edit')}}" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="id" value="{{Auth::user()->id}}">
                                     <div class="form-group">

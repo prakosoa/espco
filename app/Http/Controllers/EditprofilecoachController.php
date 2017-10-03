@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
-use Storage;
-
+use Illuminate\Support\Facades\Storage;
 
 class EditprofilecoachController extends Controller
 {
@@ -16,7 +15,6 @@ class EditprofilecoachController extends Controller
     }
 
     public function editCoach(Request $request){
-        // return $request->all();
         $this->validate($request,[
             // 'emaill' => 'required|email|unique:users',
             // 'name' => 'required',
@@ -25,9 +23,9 @@ class EditprofilecoachController extends Controller
             // 'rank'=>'required',
             // 'steam'=>'required',
             // 'fee'=>'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:7168|dimensions:max_height=1300',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:7168',
         ]);
-        
+        // return $request->all();
 
         $user = User::find($request->id);
         $user->name = $request->name;
@@ -42,10 +40,11 @@ class EditprofilecoachController extends Controller
         $user->about = $request->about;
         $user->save();
 
-        // $path = 'app/public'.substr($user->photo, 7);
-        // if($request->image == 'storage/photo-profil/photo-default.jpg') {
-        //     Storage::deleteDirectory($path);
-        // }
+        // return $path = 'app/public'.substr($user->photo, 7);
+        $path = substr($user->photo, 21);
+        if($request->image != 'storage/photo-profil/photo-default.jpg') {
+            Storage::delete('app/public/photo-profil/'.$path);
+        }
 
         $photo_profil = Storage::disk('local')->putFile('public/photo-profil', $request->file('image'));
         $user->photo = 'storage'.substr($photo_profil, 6);

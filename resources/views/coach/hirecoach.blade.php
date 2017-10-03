@@ -20,7 +20,6 @@
                             <th>Invoice</th>
                             <th>User</th>
                             <th>User Email</th>
-                            <th>Date Time</th>
                             <th>Fee</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -30,9 +29,8 @@
                         @foreach($order as $resultorder)
                             <tr>
                                 <td>{{$resultorder->id}}</td>
-                                <td>{{$resultorder->bank_number}}</td>
-                                <td><a href="http://{{$resultorder->phone}}"></a></td>
-                                <td></td>
+                                <td>User Name</td>
+                                <td>User email</a></td>
                                 <td>{{$resultorder->total_fee}}</td>
                                 <td>
                                 @if($resultorder->status==1)

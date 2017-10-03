@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 class EditprofileuserController extends Controller
 {
@@ -31,7 +31,7 @@ class EditprofileuserController extends Controller
         $path = 'app/public'.substr($user->photo, 7);
         if($request->image == 'storage/photo-profil/photo-default.jpg') {
             Storage::deleteDirectory($path);
-        }
+        }        
 
         $photo_profil = Storage::disk('local')->putFile('public/photo-profil', $request->file('image'));
         $user->photo = 'storage'.substr($photo_profil, 6);

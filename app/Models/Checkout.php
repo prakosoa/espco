@@ -16,7 +16,7 @@ class Checkout extends Model
         'id'
     ];
 
-    public function orderSchedules(){
+    public static function orderSchedules(){
         return $this->hasOne('App\Models\OrderSchedules', 'order_schedules_id');
     }
 }
