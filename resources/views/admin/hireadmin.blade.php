@@ -29,7 +29,7 @@
                         <tbody>
                         @foreach($order as $resultorder)
                             <tr>
-                                <td>{{$resultorder->id}}</td>
+                                <td>{{$resultorder->invoice}}</td>
                                 <td>{{$resultorder->bank_number}}</td>
                                 <?php 
                                 $user = \App\User::join('order_schedules as os','users_id','users.id')->where('os.id',$resultorder->order_schedules_id)->first();

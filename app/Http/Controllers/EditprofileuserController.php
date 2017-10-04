@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use Illuminate\Support\Facades\Storage;
+use File;
 
 class EditprofileuserController extends Controller
 {
@@ -28,9 +29,9 @@ class EditprofileuserController extends Controller
         $user->phone = $request->phonee;
         // $user->steam = $request->steamm;
         $user->save();
-        $path = 'app/public'.substr($user->photo, 7);
+        $path = $user->photo;
         if($request->image == 'storage/photo-profil/photo-default.jpg') {
-            Storage::deleteDirectory($path);
+            File::delete($path);
         }        
 
         $photo_profil = Storage::disk('local')->putFile('public/photo-profil', $request->file('image'));

@@ -13,6 +13,7 @@ class CheckoutController extends Controller
         return view('user.checkout', [
             'order' => $order
         ]);
+        
     }
 
     public function create(Request $request) {
@@ -22,11 +23,13 @@ class CheckoutController extends Controller
             'accountnumber' => 'required',
             'total_fee' => 'required',
             'order_schedule_id' =>'required',
+            
         ]);
 
 
         Checkout::create([
             'order_schedules_id' => $request->order_schedule_id,
+            // 'invoice'=> $request->invoice=str_random(10),
             'bank_number' => $request->accountnumber,
             'bank_name' => $request->bankname,
             'phone' => $request->phone_number,

@@ -14,11 +14,16 @@ class ProfilecoachController extends Controller
 {
     public function index($id)
     {   $coach=User::find($id);
-        $schedules = Schedule::join('order_schedules', 'order_schedules.id', '=', 'schedules.order_schedules_id')
-            ->join('checkouts', 'order_schedules.id', '=', 'checkouts.order_schedules_id')
-            ->where('checkouts.status', '=', 2);
+        // $schedules = Schedule::join('order_schedules', 'order_schedules.id', '=', 'schedules.order_schedules_id', 'left')
+        //     ->join('checkouts', 'order_schedules.id', '=', 'checkouts.order_schedules_id', 'left')
+        //     ->where('checkouts.status', '=', 1)
+        //     ->where('schedules.coach_id','=',$id)
+        //     ->where('schedules.status','=', 0);
+        $schedules = Schedule::where('schedules.status','=', 1)
+        ->where('schedules.coach_id','=',$id);
         return view('guess.profilecoach')->with('coach',$coach)
-            ->with('schedules', $schedules->get());
+            ->with('schedules', $schedules->get())
+            ;
     }
 
     public function hireCoach(Request $request) {
