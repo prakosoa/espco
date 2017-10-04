@@ -55,3 +55,7 @@
     <!-- /.login-box-body -->
 </div>
 @endsection
+
+@section('js')
+
+@endsection
