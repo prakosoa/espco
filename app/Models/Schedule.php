@@ -20,4 +20,9 @@ class Schedule extends Model
         return $this->belongsTo('App\User', 'coach_id');
     }
 
+    public function listedEvents(){
+        return $this->join('order_schedules', 'order_schedules.id', '=', 'schedules.order_schedules_id')
+            ->join('checkouts', 'order_schedules.id', '=', 'checkouts.order_schedules_id');
+    }
+
 }

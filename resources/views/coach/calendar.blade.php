@@ -27,10 +27,21 @@
 
     </div>
 </div>
+<input type="hidden" id="data" value=""/>
 <script>
-
     $(document).ready(function() {
         var listTimes = [];
+        var listEvent = [];
+        @foreach($schedules as $schedule)
+            var startTime = moment('{{$schedule->datetime}}');
+            var endTime = moment('{{\Carbon\Carbon::parse($schedule->datetime)->addHour()}}');
+            var event = {
+                id:'{{$schedule->id}}',
+                start: startTime.format(),
+                end: endTime.format()
+            } ;
+            listEvent.push(event);
+        @endforeach
 
         $('#calendar').fullCalendar({
             selectable: true,
@@ -46,7 +57,7 @@
                 $("#myModal").modal();
                 $(".modal-time").html(start.format());
             },
-            events: [],
+            events: listEvent,
             eventOverlap: false
         });
 
