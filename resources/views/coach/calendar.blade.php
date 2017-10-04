@@ -45,7 +45,7 @@
 
         $('#calendar').fullCalendar({
             selectable: true,
-            editable: true,
+            editable: false,
             defaultDate: moment().format(),
             defaultView: 'agendaWeek',
             slotMinutes: 60,
@@ -74,6 +74,7 @@
             $('#calendar').fullCalendar('renderEvent', newEvent);
             $("#myModal").modal('hide');
             $('#ordered-schedule').val(listTimes);
+            console.log(listTimes);
         });
 
     });

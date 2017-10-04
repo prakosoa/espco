@@ -18,7 +18,7 @@ class CreateSchedulesTable extends Migration
             $table->dateTime('datetime');
             $table->unsignedInteger('coach_id');
             $table->integer('status');
-            $table->unsignedInteger('order_schedules_id');
+            $table->unsignedInteger('order_schedules_id')->nullable();
             $table->index('coach_id');
             $table->index('order_schedules_id');
 

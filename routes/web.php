@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth','coach'],'prefix'=> '/coach'], function() 
     Route::get('/hirecoach', 'HirecoachController@index');
     Route::get('/editprofilecoach', 'EditprofilecoachController@index');
     Route::post('/editprofilecoach/edit', 'EditprofilecoachController@editCoach');
+    Route::post('/create_schedule', 'ScheduleController@createSchedule')->name('coach.createschedule');
 });
 
 // user

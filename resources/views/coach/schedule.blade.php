@@ -30,6 +30,15 @@
         <div class="box-body">
           @include('coach.calendar')
         </div>
+        <div class="row">
+          <br>
+          <form action="{{ route('coach.createschedule')}}" method="POST">
+              {{csrf_field()}}
+              <input id="ordered-schedule" type="hidden" name="ordered_schedule"/>
+              <input name="coach_id" type="hidden" value="{{Auth::user()->id}}"/>
+              <input type="submit" class="btn btn-primary btn-lg btn-block" value="Hire Now!" />
+          </form>
+        </div>
         <!-- /.box-body -->
         <div class="box-footer">
           Footer
