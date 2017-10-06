@@ -63,7 +63,7 @@
                                     <div class="btn-group">
                                         <button type="button" class="btn bg-maroon btn-xs dropdown-toggle" data-toggle="dropdown">
                                             <i class="fa fa-hand-o-up"></i>
-                                            <span>Pilih Aksi</span>
+                                            <span>Select Action</span>
                                             <span class="caret"></span>
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
@@ -87,7 +87,7 @@
                                                 @endif
 
                                         </ul>
-                                        </div>
+                                    </div>
                                     <!-- {{--<a href="{{"/notes/". $note->id. "/edit"}}" >--}} -->
                                     <!-- <a href="{{url('/admin/editcoach/'.$resultorder->id)}}" >   -->
                                   

@@ -42,19 +42,38 @@
                                 @elseif($resultorder->status==2)
                                 <span class="label label-primary">Paid</span>
                                 @elseif($resultorder->status==3)
-                                <span class="label label-success">Approved</span>
+                                <span class="label bg-teal">Approved</span>
                                 @elseif($resultorder->status==4)
                                 <span class="label label-success">Done</span>
                                 @elseif($resultorder->status==5)
                                 <span class="label label-danger">Refund</span>
+                                @elseif($resultorder->status==6)
+                                <span class="label bg-maroon">Canceled</span>
                                 @endif
                                 </td>
                                 <td>
-                                    {{--<a href="{{"/notes/". $note->id. "/edit"}}" >--}}
-                                    <!-- <a href="{{url('/admin/editcoach/'.$resultorder->id)}}" >   -->
-                                    <button id="btn-acc" class="btn btn-primary btn-s" style="margin: -1px; color: blue;"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                    <!-- </a> -->
-                                    <button id="btn-del" class="btn btn-primary btn-sm" style="margin: -1px; color: red;" data-id="{{$resultorder->id}}" data-nama="{{$resultorder->id}}"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+                                <div class="btn-group">
+                                        <button type="button" class="btn bg-maroon btn-xs dropdown-toggle" data-toggle="dropdown">
+                                            <i class="fa fa-hand-o-up"></i>
+                                            <span>Select Action</span>
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu pull-right" role="menu">
+                                                @if($resultorder->status==2)
+                                                <button id="btn-app" class="btn btn-primary btn-sm btn-block" data-id="{{$resultorder->invoice}}" data-invoice="{{$resultorder->invoice}}" ><i class="fa fa-money" aria-hidden="true"></i> Approve</button>
+                                                @else
+                                                <button class="btn btn-primary btn-sm btn-block" disabled><i class="fa fa-money" aria-hidden="true"></i> Approve</button>
+                                                @endif
+
+                                                 @if($resultorder->status<3)
+                                                <button id="btn-refuse" class="btn btn-danger btn-sm btn-block" data-id="{{$resultorder->id}}" data-invoice="{{$resultorder->invoice}}" ><i class="fa fa-times-circle" aria-hidden="true"></i> Refuse</button>
+                                                @else
+                                                <button class="btn btn-danger btn-sm btn-block" disabled><i class="fa fa-times-circle" aria-hidden="true"></i> Refuse</button>
+                                                @endif
+
+                                        </ul>
+                                    </div>   
                                 </td>
                             </tr>
                         @endforeach
@@ -65,69 +84,68 @@
                 </div>
                 <!-- /.box-body -->
             </div>
-            {{--modal--}}
 
-            <div class="modal fade" id="modal-del">
-                <div class="modal-warning">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <form method="post" action="{{url('/admin/coach/delete')}}" style=";">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="id" id="del-id">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Hapus user</h4>
-                                </div>
-                                <div class="modal-body">
-
-                                    <p style="text-align: center;">Hapus user dengan nama <strong id="del-nama"></strong>?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-outline">Save changes</button>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
+<!-- Modal approve-->
+<div id="modal-app" class="modal fade" role="dialog">
+        <div class="modal-success">
+        <div class="modal-dialog modal-sm">
+            <!-- konten modal-->
+            <div class="modal-content">
+            <form method="post" action="{{url('/coach/approve')}}">
+                {{ csrf_field() }}
+                <input type="hidden" name="id" id="approve-id">
+                <!-- heading modal -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Confirm?</h4>
                 </div>
-                <!-- /.modal -->
-            </div>
-
-
-
-
-            <!-- modal acc -->
-            <div class="modal fade" id="modal-acc">
-                <div class="modal-info">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <form method="post" action="{{url('/admin/coach/delete')}}" style=";">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="id" id="del-id">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Approve</h4>
-                                </div>
-                                <div class="modal-body">
-
-                                    <p style="text-align: center;">Approve this hire? <strong id="del-nama"></strong>?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-outline">Save changes</button>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
+                <!-- body modal -->
+                <div class="modal-body">
+                <p>Approve Coaching <span id='confirm-invoice'></span>?</p>
                 </div>
-                <!-- /.modal -->
+                <!-- footer modal -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal"> No</button>
+                    <button type="submit" class="btn btn-outline">Yes</button>
+                </div>
+               
             </div>
+            </form>
+        </div>
+        </div>
+    </div>
+
+<!-- modal refund -->
+
+    <div id="modal-ref" class="modal fade" role="dialog">
+        <div class="modal-danger">
+        <div class="modal-dialog modal-sm">
+            <!-- konten modal-->
+            <div class="modal-content">
+            <form method="post" action="{{url('/admin/refund')}}">
+                {{ csrf_field() }}
+                <input type="hidden" name="id" id="refund-id">
+                <!-- heading modal -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Delete Order</h4>
+                </div>
+                <!-- body modal -->
+                <div class="modal-body">
+                <p>refund Transfer invoice <span id='refund-invoice'></span>?</p>
+                </div>
+                <!-- footer modal -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal"> No</button>
+                    <button type="submit" class="btn btn-outline">Yes</button>
+                </div>
+               
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+
 
         </section>
     </div>
@@ -151,26 +169,12 @@
 //                "autoWidth": false
 //            });
         });
-        $(document).on('click', '#btn-del', function(){
-            $('#del-id').val($(this).data('id'));
-            $('#del-nama').text($(this).data('nama'));
-//            $('#ganti-nim').text($(this).data('nim'));
-//            $('#ganti-nama').text($(this).data('nama'));
-//            $('#ganti-judul').text($(this).data('judul'));
-//            $('#ganti-dosen').text($(this).data('dosen'));
-
-            $('#modal-del').modal('show');
+        $(document).on('click', '#btn-app', function(){
+            $('#approve-id').val($(this).data('id'));
+            $('#approve-invoice').text($(this).data('invoice'));
+            $('#modal-app').modal('show');
         });
-        $(document).on('click', '#btn-acc', function(){
-            // $('#del-id').val($(this).data('id'));
-            // $('#del-nama').text($(this).data('nama'));
-//            $('#ganti-nim').text($(this).data('nim'));
-//            $('#ganti-nama').text($(this).data('nama'));
-//            $('#ganti-judul').text($(this).data('judul'));
-//            $('#ganti-dosen').text($(this).data('dosen'));
 
-            $('#modal-acc').modal('show');
-        });
 
     </script>
 
