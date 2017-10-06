@@ -24,7 +24,7 @@ class ScheduleController extends Controller
      foreach($ordered_schedule as $s) {
          Schedule::create([
              'datetime' => Carbon::parse($s),
-             'status' => true,
+             'status' => 2,
              'coach_id' => $request->coach_id,
              'order_schedules_id' => null,
          ]);

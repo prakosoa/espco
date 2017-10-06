@@ -91,7 +91,7 @@
                     <div class="panel panel-info">
                         <div class="panel-heading">Payment</div>
                         <div class="panel-body">
-                        <!-- <input type="hidden" name="invoice" class="form-control" value="" /> -->
+                        <!-- <input type="hidden" name="invoice" class="form-control"> -->
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Bank Account Number:</strong></div>
                                 <div class="col-md-12">

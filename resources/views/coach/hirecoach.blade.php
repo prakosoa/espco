@@ -28,9 +28,13 @@
                         <tbody>
                         @foreach($order as $resultorder)
                             <tr>
+                            <?php 
+                                $user = \App\User::join('order_schedules as os','users_id','users.id')->where('os.id',$resultorder->order_schedules_id)->first();
+                                // $coach = \App\User::join('schedules as sch','coach_id','users.id')->where('sch.id',$resultorder->order_schedules_id)->first(); 
+                                ?>
                                 <td>{{$resultorder->id}}</td>
-                                <td>User Name</td>
-                                <td>User email</a></td>
+                                <td>@if($user!=''){{$user->name}}@endif</td>
+                                <td>@if($user!=''){{$user->email}}@endif</a></td>
                                 <td>{{$resultorder->total_fee}}</td>
                                 <td>
                                 @if($resultorder->status==1)
@@ -47,7 +51,9 @@
                                 </td>
                                 <td>
                                     {{--<a href="{{"/notes/". $note->id. "/edit"}}" >--}}
-                                    <a href="{{url('/admin/editcoach/'.$resultorder->id)}}" >  <button type="button" class="btn btn-primary btn-s" style="margin: -1px; color: blue;"><i class="fa fa-check" aria-hidden="true"></i></button></a>
+                                    <!-- <a href="{{url('/admin/editcoach/'.$resultorder->id)}}" >   -->
+                                    <button id="btn-acc" class="btn btn-primary btn-s" style="margin: -1px; color: blue;"><i class="fa fa-check" aria-hidden="true"></i></button>
+                                    <!-- </a> -->
                                     <button id="btn-del" class="btn btn-primary btn-sm" style="margin: -1px; color: red;" data-id="{{$resultorder->id}}" data-nama="{{$resultorder->id}}"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
                                 </td>
                             </tr>
@@ -76,6 +82,39 @@
                                 <div class="modal-body">
 
                                     <p style="text-align: center;">Hapus user dengan nama <strong id="del-nama"></strong>?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-outline">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+            </div>
+
+
+
+
+            <!-- modal acc -->
+            <div class="modal fade" id="modal-acc">
+                <div class="modal-info">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <form method="post" action="{{url('/admin/coach/delete')}}" style=";">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="id" id="del-id">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Approve</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                    <p style="text-align: center;">Approve this hire? <strong id="del-nama"></strong>?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
@@ -121,6 +160,16 @@
 //            $('#ganti-dosen').text($(this).data('dosen'));
 
             $('#modal-del').modal('show');
+        });
+        $(document).on('click', '#btn-acc', function(){
+            // $('#del-id').val($(this).data('id'));
+            // $('#del-nama').text($(this).data('nama'));
+//            $('#ganti-nim').text($(this).data('nim'));
+//            $('#ganti-nama').text($(this).data('nama'));
+//            $('#ganti-judul').text($(this).data('judul'));
+//            $('#ganti-dosen').text($(this).data('dosen'));
+
+            $('#modal-acc').modal('show');
         });
 
     </script>

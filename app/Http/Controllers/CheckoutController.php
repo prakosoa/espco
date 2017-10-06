@@ -23,13 +23,13 @@ class CheckoutController extends Controller
             'accountnumber' => 'required',
             'total_fee' => 'required',
             'order_schedule_id' =>'required',
-            
         ]);
 
+        // return $inv = 'INV'.substr(time(), 2).strtoupper(str_random(2));
 
         Checkout::create([
             'order_schedules_id' => $request->order_schedule_id,
-            // 'invoice'=> $request->invoice=str_random(10),
+            'invoice' => $inv = 'INV'.substr(time(), 2).strtoupper(str_random(2)),
             'bank_number' => $request->accountnumber,
             'bank_name' => $request->bankname,
             'phone' => $request->phone_number,

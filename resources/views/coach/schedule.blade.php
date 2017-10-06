@@ -36,7 +36,7 @@
               {{csrf_field()}}
               <input id="ordered-schedule" type="hidden" name="ordered_schedule"/>
               <input name="coach_id" type="hidden" value="{{Auth::user()->id}}"/>
-              <input type="submit" class="btn btn-primary btn-lg btn-block" value="Hire Now!" />
+              <input type="submit" class="btn btn-primary btn-lg btn-block" value="Done" />
           </form>
         </div>
         <!-- /.box-body -->

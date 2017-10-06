@@ -19,7 +19,7 @@ class ProfilecoachController extends Controller
         //     ->where('checkouts.status', '=', 1)
         //     ->where('schedules.coach_id','=',$id)
         //     ->where('schedules.status','=', 0);
-        $schedules = Schedule::where('schedules.status','=', 1)
+        $schedules = Schedule::where('schedules.status','=', 2)
         ->where('schedules.coach_id','=',$id);
         return view('guess.profilecoach')->with('coach',$coach)
             ->with('schedules', $schedules->get())

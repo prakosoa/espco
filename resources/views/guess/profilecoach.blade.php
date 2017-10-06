@@ -21,7 +21,7 @@
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" src="http://wiki.teamliquid.net/commons/images/thumb/3/3d/Fear_frankfurt_major_2015.jpg/600px-Fear_frankfurt_major_2015.jpg" alt="User profile picture" style="margin-left: 70px;" height="150" width="150">
+                    <img class="profile-user-img img-responsive img-circle" src="{{Asset($coach->photo)}}" alt="User profile picture" style="margin-left: 70px;" height="150" width="150">
 
                     <h3 class="profile-username text-center">{{$coach->nickname}}</h3>
 

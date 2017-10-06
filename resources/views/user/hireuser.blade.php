@@ -27,10 +27,16 @@
                         </thead>
                         <tbody>
                         @foreach($order as $resultorder)
+
                             <tr>
-                                <td>{{$resultorder->id}}</td>
-                                <td></td>
-                                <td></td>
+                            <?php 
+                                // $user = \App\User::join('order_schedules as os','users_id','users.id')->where('os.id',$resultorder->order_schedules_id)->first();
+                                $coach = \App\User::join('schedules as sch','coach_id','users.id')->where('sch.order_schedules_id',$resultorder->order_schedules_id)->first();
+                                $coach['name'];
+                               ?>
+                                <td><a href="{{url('/user/invoice/'.$resultorder->invoice)}}">{{$resultorder->invoice}}</a></td>
+                                <td>@if($coach!=''){{$coach->name}}@else - @endif</td>
+                                <td>@if($coach!=''){{$coach->email}}@else - @endif</td>
                                 <td>{{$resultorder->total_fee}}</td>
                                 <td>
                                 @if($resultorder->status==1)
@@ -46,11 +52,11 @@
                                 @endif
                                 </td>
                                 <td>
-                                    {{--<a href="{{"/notes/". $note->id. "/edit"}}" >--}}
-                                    <!-- <a href="{{url('/admin/editcoach/'.$resultorder->id)}}" >   -->
-                                    <button type="button" class="btn btn-primary btn-s" style="margin: -2px; color: blue;"><i class="fa fa-check" aria-hidden="true">Done</i></button>
-                                    <!-- </a> -->
-                                    <!-- <button id="btn-del" class="btn btn-primary btn-sm" style="margin: -1px; color: red;" data-id="{{$resultorder->id}}" data-nama="{{$resultorder->id}}"><i class="fa fa-trash" aria-hidden="true"></i></button> -->
+                                    @if($resultorder->status<4)
+                                    <button id="btn-done" class="btn btn-primary btn-sm" data-id="{{$resultorder->invoice}}" data-invoice="{{$resultorder->invoice}}" ><i class="fa fa-check" aria-hidden="true"></i> Done</button>
+                                    @else
+                                    <button class="btn btn-primary btn-sm " disabled><i class="fa fa-money" aria-hidden="true"></i> Confirm Tf</button>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -61,38 +67,39 @@
                 </div>
                 <!-- /.box-body -->
             </div>
-            {{--modal--}}
-
-            <div class="modal fade" id="modal-del">
-                <div class="modal-warning">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <form method="post" action="{{url('/admin/coach/delete')}}" style=";">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="id" id="del-id">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Hapus user</h4>
-                                </div>
-                                <div class="modal-body">
-
-                                    <p style="text-align: center;">Hapus user dengan nama <strong id="del-nama"></strong>?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-outline">Save changes</button>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- /.modal -->
-            </div>
 
             <!-- modal done -->
+ <!-- Modal confirm-->
+ <div id="modal-done" class="modal fade" role="dialog">
+        <div class="modal-success">
+        <div class="modal-dialog modal-sm">
+            <!-- konten modal-->
+            <div class="modal-content">
+            <form method="post" action="{{url('/user/done')}}">
+                {{ csrf_field() }}
+                <input type="hidden" name="id" id="done-id">
+                <!-- heading modal -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Done?</h4>
+                </div>
+                <!-- body modal -->
+                <div class="modal-body">
+                <p>Done the coaching <span id='done-invoice'></span>?</p>
+                </div>
+                <!-- footer modal -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal"> No</button>
+                    <button type="submit" class="btn btn-outline">Yes</button>
+                </div>
+               
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+
+            
 
         </section>
     </div>
@@ -116,15 +123,11 @@
 //                "autoWidth": false
 //            });
         });
-        $(document).on('click', '#btn-del', function(){
-            $('#del-id').val($(this).data('id'));
-            $('#del-nama').text($(this).data('nama'));
-//            $('#ganti-nim').text($(this).data('nim'));
-//            $('#ganti-nama').text($(this).data('nama'));
-//            $('#ganti-judul').text($(this).data('judul'));
-//            $('#ganti-dosen').text($(this).data('dosen'));
+        $(document).on('click', '#btn-done', function(){
+            $('#done-id').val($(this).data('id'));
+            $('#done-invoice').text($(this).data('invoice'));
 
-            $('#modal-del').modal('show');
+            $('#modal-done').modal('show');
         });
 
     </script>

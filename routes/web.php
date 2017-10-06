@@ -48,23 +48,11 @@ Route::group(['middleware' => ['auth','admin'],'prefix'=> '/admin'], function() 
     Route::get('/adduser', 'AdduserController@index');
     Route::post('/adduser/add', 'AdduserController@adduser');
     Route::get('/hireadmin', 'HireadminController@index');
+    Route::get('/invoice/{inv}', 'InvoiceController@index');
+    Route::post('/confirm', 'HireadminController@confirm');
+    Route::post('/refund', 'HireadminController@refund');
+    Route::post('/cancel', 'HireadminController@cancel');
 
-
-
-    // Route::group(['prefix' => '/bimbingan/skripsi'], function () {
-    //     Route::get('/', 'AdminDepartemen\AdminDptController@indexBimbinganS');
-    //     Route::post('/tambah', 'AdminDepartemen\AdminDptController@tambahBimbinganS');
-    //     Route::post('/ubah', 'AdminDepartemen\AdminDptController@ubahBimbinganS');
-    //     Route::post('/hapus', 'AdminDepartemen\AdminDptController@hapusBimbinganS');
-    //     Route::post('/daftar', 'AdminDepartemen\AdminDptController@daftarUjianS');
-    //     Route::post('/ganti', 'AdminDepartemen\AdminDptController@gantiDosenS');
-    //     Route::get('/getMhsNim','AdminDepartemen\AdminDptController@getMhsNim');
-    //     Route::get('/getMhsNama','AdminDepartemen\AdminDptController@getMhsNama');
-    //     Route::post('/filter','AdminDepartemen\AdminDptController@filterBimbinganS');
-    //     Route::post('/dps','AdminDepartemen\AdminDptController@tetapkanDPS');
-    //     Route::get('/surat/{id}','AdminDepartemen\AdminDptController@skPembimbing');
-    //     Route::get('/{url}', 'AdminDepartemen\AdminDptController@indexBimbinganS1');
-    // });
 });
 
 // coach
@@ -76,6 +64,7 @@ Route::group(['middleware' => ['auth','coach'],'prefix'=> '/coach'], function() 
     Route::get('/editprofilecoach', 'EditprofilecoachController@index');
     Route::post('/editprofilecoach/edit', 'EditprofilecoachController@editCoach');
     Route::post('/create_schedule', 'ScheduleController@createSchedule')->name('coach.createschedule');
+    Route::get('/invoice/{inv}', 'InvoiceController@index');
 });
 
 // user
@@ -88,4 +77,6 @@ Route::group(['middleware' => ['auth','user'],'prefix'=> '/user'], function() {
     Route::post('/editprofileuser/edit', 'EditprofileuserController@editUser');
     Route::post('/hirecoach', 'ProfilecoachController@hireCoach')->name('user.hirecoach');
     Route::post('/checkout', 'CheckoutController@create')->name('user.checkout-post');
+    Route::get('/invoice/{inv}', 'InvoiceController@index');
+    Route::post('/done', 'HireuserController@done');
 });

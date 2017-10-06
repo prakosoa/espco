@@ -18,7 +18,20 @@
         <div class="col-xs-12">
           <h2 class="page-header">
             <i class="fa fa-globe"></i> INVOICE
-            <i class="pull-right">Status : <span class="label label-primary">Paid</span></i>
+            <i class="pull-right">Status : 
+                                @if($check->status==1)
+                                <span class="label label-warning">Pending</span>
+                                @elseif($check->status==2)
+                                <span class="label label-primary">Paid</span>
+                                @elseif($check->status==3)
+                                <span class="label label-success">Approved</span>
+                                @elseif($check->status==4)
+                                <span class="label label-success">Done</span>
+                                @elseif($check->status==5)
+                                <span class="label label-danger">Refund</span>
+                                @elseif($check->status==6)
+                                <span class="label label-danger">Canceled</span>
+                                @endif</i>
 
 
           </h2>
@@ -26,13 +39,18 @@
         <!-- /.col -->
       </div>
       <!-- info row -->
+      @php 
+          $user = \App\User::join('order_schedules as os','users_id','users.id')->where('os.id',$check->order_schedules_id)->first();
+          $coach = \App\User::join('schedules as sch','coach_id','users.id')->where('sch.order_schedules_id',$check->order_schedules_id)->first();
+          $coach['name'];
+      @endphp
       <div class="row invoice-info">
         <div class="col-sm-4 invoice-col">
-        <b>Invoice #007612</b><br>
+        <b>Invoice : {{$check->invoice}}</b><br>
         <br>
-        <b>Coach:</b> Fear<br>
-        <b>User:</b> Prakoso<br>
-        <b>Date:</b> 2/10/2017
+        <b>Coach:</b> @if($coach != null){{$coach->name}}@else - @endif<br>
+        <b>User:</b> @if($user!=''){{$user->name}}@endif<br>
+        <b>Date:</b> {{$check->created_at->format('d F Y')}}
         <br>
         </div>
         <!-- /.col -->
@@ -59,34 +77,21 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <!-- <td>1</td> -->
-              <td>Call of Duty</td>
-              <td>455-981-221</td>
-              <!-- <td>El snort testosterone trophy driving gloves handsome</td> -->
-              <td>$64.50</td>
-            </tr>
-            <tr>
-              <!-- <td>1</td> -->
-              <td>Need for Speed IV</td>
-              <td>247-925-726</td>
-              <!-- <td>Wes Anderson umami biodiesel</td> -->
-              <td>$50.00</td>
-            </tr>
-            <tr>
-              <!-- <td>1</td> -->
-              <td>Monsters DVD</td>
-              <td>735-845-642</td>
-              <!-- <td>Terry Richardson helvetica tousled street art master</td> -->
-              <td>$10.70</td>
-            </tr>
-            <tr>
-              <!-- <td>1</td> -->
-              <td>Grown Ups Blue Ray</td>
-              <td>422-568-642</td>
-              <!-- <td>Tousled lomo letterpress</td> -->
-              <td>$25.99</td>
-            </tr>
+            @php
+                $totalFee = 0;
+            @endphp
+
+            @foreach($order->schedules as $schedule)
+              <tr>
+                <td>{{$schedule->coach->name}}</td>
+                <td>{{Carbon\Carbon::parse($schedule->datetime)->toFormattedDateString()}}</td>
+                <td>Rp {{$schedule->coach->fee}},-</td>
+              </tr>
+              @php
+                          $totalFee = $totalFee + $schedule->coach->fee;
+                      @endphp
+            @endforeach
+          
             </tbody>
           </table>
         </div>
@@ -99,34 +104,23 @@
         <div class="col-xs-6">
           <p class="lead">Payment Detail:</p>
           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-           <b>Bank Name : </b> Prakoso
+           <b>Bank Name : </b> {{$check->bank_name}}
            </br>
-           <b>Bank Number : </b> 1279921212
+           <b>Bank Number : </b> {{$check->bank_number}}
            </br>
-           <b>Phone : </b> 082220121219
+           <b>Phone : </b> {{$check->phone}}
           </p>
         </div>
         <!-- /.col -->
         <div class="col-xs-6">
-          <p class="lead">Amount Due 2/22/2014</p>
 
           <div class="table-responsive">
             <table class="table">
-              <!-- <tr>
-                <th style="width:50%">Subtotal:</th>
-                <td>$250.30</td>
-              </tr>
-              <tr>
-                <th>Tax (9.3%)</th>
-                <td>$10.34</td>
-              </tr>
-              <tr>
-                <th>Shipping:</th>
-                <td>$5.80</td>
-              </tr> -->
               <tr>
                 <th>Total:</th>
-                <td>$265.24</td>
+                <td>  
+                      Rp {{$totalFee}},-
+                </td>
               </tr>
             </table>
           </div>
@@ -138,12 +132,9 @@
       <!-- this row will not appear when printing -->
       <div class="row no-print">
         <div class="col-xs-12">
-          <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <!-- <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment -->
-          </button>
-          <!-- <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
-          </button> -->
+          <!-- <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a> -->
+          <a class="btn btn-default" onclick='window.print()'><i class="fa fa-print"></i> Print</a>
+        
         </div>
       </div>
     </section>

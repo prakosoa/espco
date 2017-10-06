@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Checkout extends Model
 {
     //
-    public $timestamps = false;
+    // public $timestamps = true;
     protected $fillable = [
-        'order_schedules_id', 'bank_number', 'bank_name', 'phone', 'total_fee', 'status',
+        'order_schedules_id', 'bank_number', 'bank_name', 'phone', 'total_fee', 'status', 'invoice',
     ];
 
     protected $guarded = [
