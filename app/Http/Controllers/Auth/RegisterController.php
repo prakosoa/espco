@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Toastr;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -54,7 +55,12 @@ class RegisterController extends Controller
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:6|confirmed',
 //                'level' => 'required',
-            ]);
+                // 'g-recaptcha-response'  => 'required',
+                // 'captcha'               => 'required|min:1'
+            ]
+          
+        
+        );
 
     }
 
@@ -65,8 +71,9 @@ class RegisterController extends Controller
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'level' => $data['level'],
+                
             ]);
-
+            Toastr::success('Register Success', 'Success!!');
     }
 
 }

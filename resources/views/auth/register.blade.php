@@ -49,13 +49,15 @@
             <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
         </div>
         <div class="row">
+        <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}" style="margin:20px"></div>
             <div class="col-xs-7">
-                <div class="checkbox">
+                <!-- <div class="checkbox">
                     <label>
                         <input type="checkbox"> I agree to the <a href="#">terms</a>
                     </label>
-                </div>
+                </div> -->
             </div>
+          
             <!-- /.col -->
             <div class="col-xs-5">
                 <button type="submit" class="btn btn-primary btn-raised btn-block">Register</button>
@@ -66,5 +68,8 @@
     <a href="{{('login')}}" class="text-center">I already have a membership</a>
 </div>
 </div>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+@endsection
+@section('js')
 
 @endsection

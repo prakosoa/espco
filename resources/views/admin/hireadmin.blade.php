@@ -40,8 +40,8 @@
                                 
 
                                 <td>@if($user!=''){{$user->name}}@endif</td>
-                                <td>@if($coach != null){{$coach->name}}@else - @endif</td>
-                                <td>{{$resultorder->total_fee}}</td>
+                                <td><a href"#" id="info" role="button" data-id="{{$coach->id}}" data-bank="{{$coach->bank}}" >@if($coach != null){{$coach->name}}@else - @endif</a></td>
+                                <td>Rp {{$resultorder->total_fee}},-</td>
                                 <td>
                                 @if($resultorder->status==1)
                                 <span class="label label-warning">Pending</span>
@@ -195,6 +195,37 @@
         </div>
     </div>
 
+
+    <!-- modal info-->
+
+<div id="modal-info" class="modal fade" role="dialog">
+        <div class="modal-info">
+        <div class="modal-dialog modal-md">
+            <!-- konten modal-->
+            <div class="modal-content">
+            
+                <input type="hidden" name="id" id="info-id">
+                <!-- heading modal -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Coach Info</h4>
+                </div>
+                <!-- body modal -->
+                <div class="modal-body">
+               <b> <p>Bank Account Number :  <span id='bank-numb'></span></p></b>
+                </div>
+                <!-- footer modal -->
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-outline pull-left" data-dismiss="modal"> No</button>
+                    <button type="submit" class="btn btn-outline">Yes</button> -->
+                </div>
+               
+            </div>
+         
+        </div>
+        </div>
+    </div>
+
         </section>
     </div>
 
@@ -234,8 +265,12 @@
         $(document).on('click', '#btn-can', function(){
             $('#cancel-id').val($(this).data('id'));
             $('#cancel-invoice').text($(this).data('invoice'));
-            
             $('#modal-can').modal('show');
+        });
+        $(document).on('click', '#info', function(){
+            $('#bank-id').val($(this).data('id'));
+            $('#bank-numb').text($(this).data('bank'));
+            $('#modal-info').modal('show');
         });
         
 

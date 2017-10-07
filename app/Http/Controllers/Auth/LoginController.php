@@ -29,10 +29,13 @@ class LoginController extends Controller
 //    protected $redirectTo = '/';
     protected function authenticated(Request $request, $user)
     {if($user->level==1){
+        Toastr::success('Login Success', 'Success!!');
         return redirect('/admin');
     }elseif($user->level==2){
+        Toastr::success('Login Success', 'Success!!');
         return redirect('/coach/editprofilecoach');
     }
+    Toastr::success('Login Success', 'Success!!');
     return redirect('/');
     }
 

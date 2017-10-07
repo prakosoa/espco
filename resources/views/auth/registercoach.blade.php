@@ -76,6 +76,7 @@
 
 
             <div class="row">
+            <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}" style="margin:20px"></div>
                 <div class="col-xs-7">
                     <div class="checkbox">
                         <label>

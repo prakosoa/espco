@@ -1,5 +1,6 @@
 @extends('layouts.back.index')
 @section('css')
+<link rel="stylesheet" href="{{asset('dist/css/skins/all-md-skins.min.css') }}">
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -9,10 +10,7 @@
       Dashboard
       <small>Control panel</small>
     </h1>
-    <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Dashboard</li>
-    </ol>
+
   </section>
   <!-- Main content -->
   <section class="content">
@@ -60,6 +58,9 @@
     </div>
     
       </section>
+
+
+      
     </div>
     <!-- /.row (main row) -->
 

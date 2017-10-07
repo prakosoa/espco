@@ -11,7 +11,6 @@ class HireadminController extends Controller
 {
     public function index(){
         $order = Checkout::get();
-       
         return view('admin.hireadmin')->with('order',$order);
         }
 

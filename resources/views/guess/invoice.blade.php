@@ -84,7 +84,7 @@
             @foreach($order->schedules as $schedule)
               <tr>
                 <td>{{$schedule->coach->name}}</td>
-                <td>{{Carbon\Carbon::parse($schedule->datetime)->toFormattedDateString()}}</td>
+                <td>{{Carbon\Carbon::parse($schedule->datetime)->format('d M Y - h:i A')}}</td>
                 <td>Rp {{$schedule->coach->fee}},-</td>
               </tr>
               @php
@@ -115,11 +115,12 @@
         <div class="col-xs-6">
 
           <div class="table-responsive">
-            <table class="table">
+            <table class="table" >
               <tr>
+              <br>
                 <th>Total:</th>
-                <td>  
-                      Rp {{$totalFee}},-
+                <td style="padding-left:30%;">  
+                     Rp {{$totalFee}},-
                 </td>
               </tr>
             </table>

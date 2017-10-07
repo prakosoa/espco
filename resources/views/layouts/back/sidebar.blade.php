@@ -76,14 +76,27 @@
       </span>
         </a>
       </li>
-    <li>
-      <a href="{{ url('/coach/schedules/') }}">
-        <i class="fa fa-calendar"></i> <span>Schedule</span>
-        <span class="pull-right-container">
-      {{--<small class="label pull-right bg-green">Hot</small>--}}
-      </span>
-      </a>
-    </li>
+     
+
+  <!--  -->
+  <li class="treeview">
+        <a href="#">
+          <i class="fa fa-calendar"></i>
+          <span>Schedules</span>
+          <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{ url('/coach/schedules/') }}"><i class="fa fa-calendar-plus-o "></i> Add Schedule</a></li>
+          <li><a href="{{ url('/coach/deleteschedules/') }}"><i class="fa fa-calendar-times-o"></i> Delete Schedule</a></li>
+        </ul>
+      </li>
+  
+<!--  -->
+
+
+
       {{--Lesson--}}
     <li>
       <a href="{{ url('/coach/hirecoach') }}">

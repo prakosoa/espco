@@ -70,6 +70,8 @@ Route::group(['middleware' => ['auth','coach'],'prefix'=> '/coach'], function() 
     Route::post('/refuse', 'HirecoachController@refuse');
     Route::get('/editpwc', 'EditpwcoachController@index');
     Route::post('/editpwc/edit', 'EditpwcoachController@edit');
+    Route::get('/deleteschedules', 'DeleteschedulesController@show');
+    Route::post('/deleteschedules/delete', 'DeleteschedulesController@destroy');
 });
 
 // user

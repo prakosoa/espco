@@ -30,14 +30,16 @@
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
+            <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}" style="margin:20px"></div>
                 <div class="col-xs-7">
-                    <div class="checkbox">
+                    <!-- <div class="checkbox">
                         <label>
                             <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                         </label>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- /.col -->
+                
                 <div class="col-xs-5">
                     <button type="submit" class="btn btn-primary btn-raised btn-block btn-flat">Sign In</button>
                 </div>
@@ -54,6 +56,7 @@
     </div>
     <!-- /.login-box-body -->
 </div>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 @endsection
 
 @section('js')
