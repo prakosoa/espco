@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Validator;
+use Toastr;
 
 class ScheduleController extends Controller
 {
@@ -27,8 +28,10 @@ class ScheduleController extends Controller
              'status' => 2,
              'coach_id' => $request->coach_id,
              'order_schedules_id' => null,
+             
          ]);
      }
+     Toastr::success('Sueccess Add Schedule', 'Success!!');
      return back();
  }
 }

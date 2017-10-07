@@ -49,7 +49,7 @@
             {{--modal--}}
 
             <div class="modal fade" id="modal-del">
-                <div class="modal-warning">
+                <div class="modal-danger">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <form method="post" action="{{url('/admin/user/delete')}}" style=";">

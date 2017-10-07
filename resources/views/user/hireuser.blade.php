@@ -49,13 +49,15 @@
                                 <span class="label label-success">Done</span>
                                 @elseif($resultorder->status==5)
                                 <span class="label label-danger">Refund</span>
+                                @elseif($resultorder->status==6)
+                                <span class="label label-danger">Canceled</span>
                                 @endif
                                 </td>
                                 <td>
-                                    @if($resultorder->status<4)
+                                    @if($resultorder->status==3)
                                     <button id="btn-done" class="btn btn-primary btn-sm" data-id="{{$resultorder->invoice}}" data-invoice="{{$resultorder->invoice}}" ><i class="fa fa-check" aria-hidden="true"></i> Done</button>
                                     @else
-                                    <button class="btn btn-primary btn-sm " disabled><i class="fa fa-money" aria-hidden="true"></i> Confirm Tf</button>
+                                    <button class="btn btn-primary btn-sm " disabled><i class="fa fa-money" aria-hidden="true"></i> done</button>
                                     @endif
                                 </td>
                             </tr>

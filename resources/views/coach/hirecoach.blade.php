@@ -67,7 +67,7 @@
                                                 @endif
 
                                                  @if($resultorder->status<3)
-                                                <button id="btn-refuse" class="btn btn-danger btn-sm btn-block" data-id="{{$resultorder->id}}" data-invoice="{{$resultorder->invoice}}" ><i class="fa fa-times-circle" aria-hidden="true"></i> Refuse</button>
+                                                <button id="btn-refuse" class="btn btn-danger btn-sm btn-block" data-id="{{$resultorder->invoice}}" data-invoice="{{$resultorder->invoice}}" ><i class="fa fa-times-circle" aria-hidden="true"></i> Refuse</button>
                                                 @else
                                                 <button class="btn btn-danger btn-sm btn-block" disabled><i class="fa fa-times-circle" aria-hidden="true"></i> Refuse</button>
                                                 @endif
@@ -97,11 +97,11 @@
                 <!-- heading modal -->
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"> Confirm?</h4>
+                    <h4 class="modal-title"> Approve?</h4>
                 </div>
                 <!-- body modal -->
                 <div class="modal-body">
-                <p>Approve Coaching <span id='confirm-invoice'></span>?</p>
+                <p>Approve Coaching <span id='approve-invoice'></span>?</p>
                 </div>
                 <!-- footer modal -->
                 <div class="modal-footer">
@@ -122,17 +122,17 @@
         <div class="modal-dialog modal-sm">
             <!-- konten modal-->
             <div class="modal-content">
-            <form method="post" action="{{url('/admin/refund')}}">
+            <form method="post" action="{{url('/coach/refuse')}}">
                 {{ csrf_field() }}
-                <input type="hidden" name="id" id="refund-id">
+                <input type="hidden" name="id" id="refuse-id">
                 <!-- heading modal -->
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"> Delete Order</h4>
+                    <h4 class="modal-title"> Refuse</h4>
                 </div>
                 <!-- body modal -->
                 <div class="modal-body">
-                <p>refund Transfer invoice <span id='refund-invoice'></span>?</p>
+                <p>Refuse Hiring <span id='refuse-invoice'></span>?</p>
                 </div>
                 <!-- footer modal -->
                 <div class="modal-footer">
@@ -160,14 +160,6 @@
     <script>
         $(function () {
             $('#example1').DataTable();
-//            $('#example2').DataTable({
-//                "paging": true,
-//                "lengthChange": false,
-//                "searching": false,
-//                "ordering": true,
-//                "info": true,
-//                "autoWidth": false
-//            });
         });
         $(document).on('click', '#btn-app', function(){
             $('#approve-id').val($(this).data('id'));
@@ -175,6 +167,11 @@
             $('#modal-app').modal('show');
         });
 
+        $(document).on('click', '#btn-refuse', function(){
+            $('#refuse-id').val($(this).data('id'));
+            $('#refuse-invoice').text($(this).data('invoice'));
+            $('#modal-ref').modal('show');
+        });
 
     </script>
 

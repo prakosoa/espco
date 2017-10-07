@@ -18,8 +18,16 @@ class HirecoachController extends Controller
         $check = Checkout::where('invoice',$request->id)->first();
         $check->status = 3;
         $check->save();
+        Toastr::success('Sueccess Approve', 'Success!!');
+        return back();
+    }
 
-        Toastr::success('Sueccess Change Status', 'Success');
+    public function refuse(Request $request){
+        // return $request-> all();
+        $check = Checkout::where('invoice',$request->id)->first();
+        $check->status = 5;
+        $check->save();
+        Toastr::success('Sueccess Refuse', 'Success!!');
         return back();
     }
 

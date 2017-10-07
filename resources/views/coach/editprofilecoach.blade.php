@@ -40,13 +40,18 @@
                                     <b>Phone</b> <a class="pull-right">{{ Auth::user()->phone }}</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Steam</b> <a class="pull-right" href="{{ Auth::user()->steam }}">Go to Steam</a>
+                                <b>Steam</b> <a class="pull-right" href="http://{{Auth::user()->steam}}">Go to steam</a>
                                 </li>
                                 <li class="list-group-item">
                                     <b>Rank</b> <a class="pull-right">{{ Auth::user()->rank }}</a>
                                 </li>
                                 <li class="list-group-item">
                                     <b>Fee</b> <a class="pull-right">Rp {{ Auth::user()->fee }}</a>
+                                </li>
+                                <li>
+                                <a href="{{url('/coach/editpwc')}}">
+                                <button type="button" class="btn btn-block btn-info btn-lg">Edit Password</button>
+                                </a>
                                 </li>
                             </ul>
 
@@ -98,13 +103,13 @@
                                             <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="{{ Auth::user()->email}}">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="inputName" class="col-sm-2 control-label">Password</label>
 
                                         <div class="col-sm-10">
                                             <input type="password" class="form-control" id="inputName" placeholder="Password" name="password" value="">
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <label for="inputNickname" class="col-sm-2 control-label">Nickname</label>
 
@@ -137,7 +142,7 @@
                                         <label for="inputGame" class="col-sm-2 control-label">Game</label>
 
                                         <div class="col-sm-10">
-                                            <select name ="games_id" class="form-control select2" style="width: 100%;">
+                                            <select name ="games_id" class="form-control select2" style="width: 100%;" >
                                                 <option value="" selected="selected"  disabled="disabled"><b>Select Game</b></option>
                                                 <option value="1">Dota2</option>
                                                 <option value="2">CS:GO</option>
@@ -149,6 +154,12 @@
 
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" id="inputName" placeholder="Fee" name="fee" value="{{ Auth::user()->fee }}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputbank" class="col-sm-2 control-label">Bank</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputbank" placeholder="Bank" name="bank" value="{{ Auth::user()->bank }}">
                                         </div>
                                     </div>
                                     <div class="form-group">

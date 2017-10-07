@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Toastr;
 use Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -37,7 +38,9 @@ class EditprofilecoachController extends Controller
         $user->rank = $request->rank;
         $user->games_id = $request->games_id;
         $user->fee = $request->fee;
+        $user->bank = $request->bank;
         $user->about = $request->about;
+        Toastr::success('Sueccess Edit Profile', 'Success');
         $user->save();
 
         // return $path = 'app/public'.substr($user->photo, 7);
@@ -48,6 +51,7 @@ class EditprofilecoachController extends Controller
 
         $photo_profil = Storage::disk('local')->putFile('public/photo-profil', $request->file('image'));
         $user->photo = 'storage'.substr($photo_profil, 6);
+        Toastr::success('Sueccess Edit Profile', 'Success');
         $user->save();
 
 

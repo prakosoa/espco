@@ -21,7 +21,7 @@
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" src="{{Asset($coach->photo)}}" alt="User profile picture" style="margin-left: 70px;" height="150" width="150">
+                    <img class="profile-user-img img-responsive img-circle" src="{{Asset($coach->photo)}}" alt="User profile picture" style="margin-left: 60px; height:150px; width:150px">
 
                     <h3 class="profile-username text-center">{{$coach->nickname}}</h3>
 

@@ -49,7 +49,7 @@
             {{--modal--}}
 
             <div class="modal fade" id="modal-del">
-                <div class="modal-warning">
+                <div class="modal-danger">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <form method="post" action="{{url('/admin/coach/delete')}}" style=";">
@@ -58,15 +58,15 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">Hapus user</h4>
+                                <h4 class="modal-title">Delete user</h4>
                             </div>
                             <div class="modal-body">
 
-                                <p style="text-align: center;">Hapus user dengan nama <strong id="del-nama"></strong>?</p>
+                                <p style="text-align: center;">Delete <strong id="del-nama"></strong>?</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-outline">Save changes</button>
+                                <button type="submit" class="btn btn-outline">Yes</button>
                             </div>
                             </form>
                         </div>

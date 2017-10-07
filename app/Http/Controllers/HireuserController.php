@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use DB;
+use Toastr;
 use App\Models\Checkout;
 use Illuminate\Http\Request;
 use Auth;
@@ -18,6 +19,7 @@ class HireuserController extends Controller
         $check = Checkout::where('invoice',$request->id)->first();
         $check->status = 4;
         $check->save();
+        Toastr::success('Sueccess!! Coaching status is Done.', 'Success');
         return back();
     }
 }

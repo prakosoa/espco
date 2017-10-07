@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Toastr;
 
 class EdituserController extends Controller
 {
@@ -18,6 +19,7 @@ class EdituserController extends Controller
         $user->email = $request->emaill;
         $user->phone = $request->phonee;
         $user->steam = $request->steamm;
+        Toastr::success('Sueccess Edit User', 'Success!!');
         $user->save();
 
         return redirect('/admin/usertable');
@@ -26,6 +28,7 @@ class EdituserController extends Controller
 
 //        return $request->all();
         $user = User::find($request->id);
+        Toastr::success('Sueccess Delete User', 'Success!!');
         $user->delete();
 
         return redirect('/admin/usertable');

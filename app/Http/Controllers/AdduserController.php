@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Toastr;
 
 class AdduserController extends Controller
 {
@@ -34,6 +35,7 @@ class AdduserController extends Controller
         $user->rank = $request->rankk;
          $user->games_id = $request->games_id;    
         $user->fee = $request->feee;
+        Toastr::success('Sueccess Add User', 'Success!!');
         $user->save();
 
         if($request->levell==2){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Toastr;
 class EditcoachController extends Controller
 {
     public function index($id){
@@ -35,6 +36,7 @@ class EditcoachController extends Controller
         $coach->steam = $request->steamm;
         $coach->rank = $request->rankk;
         $coach->fee = $request->feee;
+        Toastr::success('Sueccess Edit User', 'Success!!');
         $coach->save();
 
         return redirect('/admin/coachtable');
@@ -43,6 +45,7 @@ class EditcoachController extends Controller
 
 //        return $request->all();
         $coach = User::find($request->id);
+        Toastr::success('Sueccess Delete', 'Success!!');
         $coach->delete();
 
         return redirect('/admin/coachtable');

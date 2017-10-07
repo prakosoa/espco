@@ -37,6 +37,7 @@ Route::get('/listcoach/search', 'ListcoachController@search');
 Route::group(['middleware' => ['auth','admin'],'prefix'=> '/admin'], function() {
     
     Route::get('/', 'AdminController@index');
+    
     Route::get('/coachtable', 'CoachtableController@index');
     Route::get('/usertable', 'UsertableController@index');
     Route::get('/editcoach/{id}', 'EditcoachController@index');
@@ -66,6 +67,9 @@ Route::group(['middleware' => ['auth','coach'],'prefix'=> '/coach'], function() 
     Route::post('/create_schedule', 'ScheduleController@createSchedule')->name('coach.createschedule');
     Route::get('/invoice/{inv}', 'InvoiceController@index');
     Route::post('/approve', 'HirecoachController@approve');
+    Route::post('/refuse', 'HirecoachController@refuse');
+    Route::get('/editpwc', 'EditpwcoachController@index');
+    Route::post('/editpwc/edit', 'EditpwcoachController@edit');
 });
 
 // user
@@ -80,4 +84,6 @@ Route::group(['middleware' => ['auth','user'],'prefix'=> '/user'], function() {
     Route::post('/checkout', 'CheckoutController@create')->name('user.checkout-post');
     Route::get('/invoice/{inv}', 'InvoiceController@index');
     Route::post('/done', 'HireuserController@done');
+    Route::get('/editpwu', 'EditpwuserController@index');
+    Route::post('/editpwu/edit', 'EditpwuserController@edit');
 });

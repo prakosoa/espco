@@ -39,6 +39,13 @@
                                 <li class="list-group-item">
                                     <b>Phone</b> <a class="pull-right">{{ Auth::user()->phone }}</a>
                                 </li>
+                                <li class="list-group-item">
+                                    <b>Steam</b> <a class="pull-right" href="http://{{Auth::user()->steam}}">Go to steam</a>
+                                </li>
+                                <li>
+                                <a href="{{url('/user/editpwu')}}">
+                                <button type="button" class="btn btn-block btn-info btn-lg">Edit Password</button>
+                                </a>
                                 </li>
                             </ul>
 
@@ -53,7 +60,7 @@
                 <div class="col-md-9">
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
-                            <li><a href="#settings" data-toggle="tab">Settings</a></li>
+                            <li><a href="#settings" data-toggle="tab"><b style="font-color : white;">Settings</b></a></li>
                         </ul>
                         <div class="tab-content">
 
@@ -75,18 +82,25 @@
                                             <input type="email" class="form-control" id="inputEmail" name="emaill" placeholder="Email" value="{{ Auth::user()->email }}">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="inputName" class="col-sm-2 control-label">Password</label>
 
                                         <div class="col-sm-10">
                                             <input type="password" class="form-control" id="inputName" name="passwordd" placeholder="Password">
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
 
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" id="inputPhone" name="phonee" placeholder="Phone" value="{{ Auth::user()->phone }}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPhone" class="col-sm-2 control-label">Steam</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputPhone" name="steam" placeholder="steam" value="{{ Auth::user()->steam }}">
                                         </div>
                                     </div>
                                     <div class="form-group">
