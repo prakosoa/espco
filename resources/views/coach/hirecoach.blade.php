@@ -32,7 +32,7 @@
                                 $user = \App\User::join('order_schedules as os','users_id','users.id')->where('os.id',$resultorder->order_schedules_id)->first();
                                 // $coach = \App\User::join('schedules as sch','coach_id','users.id')->where('sch.id',$resultorder->order_schedules_id)->first(); 
                                 ?>
-                                <td>{{$resultorder->id}}</td>
+                                <td><a href="{{url('/coach/invoice/'.$resultorder->invoice)}}">{{$resultorder->invoice}}</a></td>
                                 <td>@if($user!=''){{$user->name}}@endif</td>
                                 <td>@if($user!=''){{$user->email}}@endif</a></td>
                                 <td>{{$resultorder->total_fee}}</td>

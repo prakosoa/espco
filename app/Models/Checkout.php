@@ -9,14 +9,14 @@ class Checkout extends Model
     //
     // public $timestamps = true;
     protected $fillable = [
-        'order_schedules_id', 'bank_number', 'bank_name', 'phone', 'total_fee', 'status', 'invoice',
+        'order_schedules_id', 'bank_number', 'bank_name', 'phone', 'total_fee', 'status', 'invoice','receipt',
     ];
 
     protected $guarded = [
         'id'
     ];
 
-    public static function orderSchedules(){
-        return $this->hasOne('App\Models\OrderSchedules', 'order_schedules_id');
+    public function orderSchedules(){
+        return $this->belongsTo('App\Models\OrderSchedule', 'order_schedules_id');
     }
 }

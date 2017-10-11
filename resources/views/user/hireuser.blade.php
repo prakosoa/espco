@@ -54,11 +54,29 @@
                                 @endif
                                 </td>
                                 <td>
-                                    @if($resultorder->status==3)
-                                    <button id="btn-done" class="btn btn-primary btn-sm" data-id="{{$resultorder->invoice}}" data-invoice="{{$resultorder->invoice}}" ><i class="fa fa-check" aria-hidden="true"></i> Done</button>
-                                    @else
-                                    <button class="btn btn-primary btn-sm " disabled><i class="fa fa-money" aria-hidden="true"></i> done</button>
-                                    @endif
+
+
+                                <div class="btn-group">
+                                        <button type="button" class="btn bg-maroon btn-xs dropdown-toggle" data-toggle="dropdown">
+                                            <i class="fa fa-hand-o-up"></i>
+                                            <span>Select Action</span>
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu pull-right" role="menu">
+                                        @if($resultorder->status==3)
+                                        <button id="btn-done" class="btn btn-primary btn-sm btn-block" data-id="{{$resultorder->invoice}}" data-invoice="{{$resultorder->invoice}}" ><i class="fa fa-check" aria-hidden="true"></i> Done</button>
+                                        @else
+                                        <button class="btn btn-primary btn-sm btn-block" disabled><i class="fa fa-money" aria-hidden="true"></i> done</button>
+                                        @endif
+
+                                        @if($resultorder->status==1)
+                                        <button id="btn-upl" class="btn btn-danger btn-sm btn-block" data-id="{{$resultorder->invoice}}" data-invoice="{{$resultorder->invoice}}" ><i class="fa fa-upload" aria-hidden="true"></i> Upload Reciept</button>
+                                        @else
+                                        <button class="btn btn-primary btn-sm btn-block " disabled><i class="fa fa-upload" aria-hidden="true"></i> Upload Reciept</button>
+                                        @endif
+                                        </ul>
+                                    </div>  
                                 </td>
                             </tr>
                         @endforeach
@@ -71,37 +89,76 @@
             </div>
 
             <!-- modal done -->
- <!-- Modal confirm-->
- <div id="modal-done" class="modal fade" role="dialog">
-        <div class="modal-success">
-        <div class="modal-dialog modal-sm">
-            <!-- konten modal-->
-            <div class="modal-content">
-            <form method="post" action="{{url('/user/done')}}">
-                {{ csrf_field() }}
-                <input type="hidden" name="id" id="done-id">
-                <!-- heading modal -->
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"> Done?</h4>
-                </div>
-                <!-- body modal -->
-                <div class="modal-body">
-                <p>Done the coaching <span id='done-invoice'></span>?</p>
-                </div>
-                <!-- footer modal -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal"> No</button>
-                    <button type="submit" class="btn btn-outline">Yes</button>
-                </div>
-               
-            </div>
-            </form>
-        </div>
-        </div>
-    </div>
+                <div id="modal-done" class="modal fade" role="dialog">
+                        <div class="modal-success">
+                        <div class="modal-dialog modal-sm">
+                            <!-- konten modal-->
+                            <div class="modal-content">
+                            <form method="post" action="{{url('/user/done')}}">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="id" id="done-id">
+                                <!-- heading modal -->
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title"> Done?</h4>
+                                </div>
+                                <!-- body modal -->
+                                <div class="modal-body">
+                                <p>Done the coaching <span id='done-invoice'></span>?</p>
+                                </div>
+                                <!-- footer modal -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal"> No</button>
+                                    <button type="submit" class="btn btn-outline">Yes</button>
+                                </div>
+                            
+                            </div>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
 
-            
+
+<!-- Modal Upload -->
+                <div id="modal-upl" class="modal fade" role="dialog">
+                        <div class="modal-primary">
+                        <div class="modal-dialog modal-md">
+                            <!-- konten modal-->
+                            <div class="modal-content">
+                            <form method="post" action="{{url('/user/upload')}}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="id" id="upl-id">
+                                <!-- heading modal -->
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Upload Reciept</h4>
+                                </div>
+                                <!-- body modal -->
+                                <div class="modal-body">
+                                    <b> <p>Please Upload Reciept For <span id='upl-invoice'></span></p></b>
+                                        <div class="form-group">
+                                            <label for="inputExperience" class="col-sm-2 control-label">Photo</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" readonly="" class="form-control" placeholder="Browse...">
+                                                <input type="file" id="imgInp" name="image" require>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <img  id="blah" alt="default" style="width:100px; height:100px;">
+                                            </div>
+                                        </div>
+                                    </br>
+                                </div>
+                                <!-- footer modal -->
+                                <div class="modal-footer">
+                                   
+                                    <button type="submit" class="btn btn-outline">Done</button>
+                                </div>
+                            
+                            </div>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
 
         </section>
     </div>
@@ -131,7 +188,30 @@
 
             $('#modal-done').modal('show');
         });
+        $(document).on('click', '#btn-upl', function(){
+            $('#upl-id').val($(this).data('id'));
+            $('#upl-invoice').text($(this).data('invoice'));
 
+            $('#modal-upl').modal('show');
+        });
+      
     </script>
+  <script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#imgInp").change(function(){
+        readURL(this);
+    });
+</script>
 
 @endsection

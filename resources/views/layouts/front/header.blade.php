@@ -23,13 +23,13 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li>
                                     @if(Auth::user()->level == 1)
-                                        <a href="/admin" style="color: red;">Profile
+                                        <a href="{{url('admin')}}" style="color: red;">Profile
                                         </a>
                                     @elseif (Auth::user()->level == 2)
-                                        <a href="coach/editprofilecoach" style="color: red;">Profile
+                                        <a href="{{url('coach/editprofilecoach')}}" style="color: red;">Profile
                                         </a>
                                     @elseif (Auth::user()->level == 3)
-                                        <a href="user/editprofileuser" style="color: red;">Profile
+                                        <a href="{{url('user/editprofileuser')}}" style="color: red;">Profile
                                         </a>
                                     @endif
                                 </li>

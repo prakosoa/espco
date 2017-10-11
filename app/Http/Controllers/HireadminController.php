@@ -6,6 +6,7 @@ use App\Models\Checkout;
 use Illuminate\Http\Request;
 use App\User;
 use Toastr;
+use App\Models\Schedule;
 
 class HireadminController extends Controller
 {
@@ -18,7 +19,12 @@ class HireadminController extends Controller
         $check = Checkout::find($request->id);
         $check->status = 2;
         Toastr::success('Sueccess Confirm Payment', 'Success!!');
-        $check->save();
+        if(!$check->save()){
+            Toastr::error('Error', 'Error!!');
+        }
+        $schedules = Schedule::where('order_schedules_id', $check->orderSchedules->id)->first();
+        $schedules->status = 2;
+        $tes = $schedules->save();
         return back();
     }
     public function refund(Request $request){

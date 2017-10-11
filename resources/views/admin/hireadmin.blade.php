@@ -39,7 +39,7 @@
                                 <td>{{$resultorder->bank_number}}</td>
                                 
 
-                                <td>@if($user!=''){{$user->name}}@endif</td>
+                                <td><a href"#" id="infou" role="button" data-id="{{$resultorder->id}}" data-banku="{{$resultorder->bank_number}}"  data-bname="{{$resultorder->bank_name}}" data-receipt="{{URL::asset($resultorder->receipt)}}">@if($user!=''){{$user->name}}@endif</a></td>
                                 <td><a href"#" id="info" role="button" data-id="{{$coach->id}}" data-bank="{{$coach->bank}}" >@if($coach != null){{$coach->name}}@else - @endif</a></td>
                                 <td>Rp {{$resultorder->total_fee}},-</td>
                                 <td>
@@ -196,8 +196,7 @@
     </div>
 
 
-    <!-- modal info-->
-
+    <!-- modal info c-->
 <div id="modal-info" class="modal fade" role="dialog">
         <div class="modal-info">
         <div class="modal-dialog modal-md">
@@ -226,6 +225,44 @@
         </div>
     </div>
 
+
+    <!-- modal info U-->
+    <div id="modal-user" class="modal fade" role="dialog">
+        <div class="modal-info">
+        <div class="modal-dialog modal-md">
+            <!-- konten modal-->
+            <div class="modal-content">
+            
+                <input type="hidden" name="id" id="infou-id">
+                <!-- heading modal -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> User Info</h4>
+                </div>
+                <!-- body modal -->
+                <div class="modal-body">
+               <b> <p>Bank Account Number :  <span id='bank-number'></span></p></b>
+               <b> <p>Bank Account Name :  <span id='bank-name'></span></p></b>
+               <b> <p>Transfer Receipt :  </p></b> <a id="receipt-photo2" target='_blank'><img id='receipt-photo' style="width:100%; height:auto;"></a>
+              
+              
+                </div>
+                <!-- footer modal -->
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-outline pull-left" data-dismiss="modal"> No</button>
+                    <button type="submit" class="btn btn-outline">Yes</button> -->
+                </div>
+               
+            </div>
+         
+        </div>
+        </div>
+    </div>
+
+
+
+
+
         </section>
     </div>
 
@@ -239,14 +276,7 @@
     <script>
         $(function () {
             $('#example1').DataTable();
-//            $('#example2').DataTable({
-//                "paging": true,
-//                "lengthChange": false,
-//                "searching": false,
-//                "ordering": true,
-//                "info": true,
-//                "autoWidth": false
-//            });
+
         });
         
 
@@ -271,6 +301,16 @@
             $('#bank-id').val($(this).data('id'));
             $('#bank-numb').text($(this).data('bank'));
             $('#modal-info').modal('show');
+        });
+        $(document).on('click', '#infou', function(){
+            $('#bank-id').val($(this).data('id'));
+            $('#bank-number').text($(this).data('banku'));
+            $('#bank-name').text($(this).data('bname'));
+            // $('#receipt-photo').text($(this).data('receipt'));
+            // $('#receipt-photo').append($("<img>").data('receipt'));
+            $('#receipt-photo').attr('src', $(this).data('receipt'));
+            $('#receipt-photo2').attr('href', $(this).data('receipt'));
+            $('#modal-user').modal('show');
         });
         
 

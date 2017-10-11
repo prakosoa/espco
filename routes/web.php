@@ -88,4 +88,5 @@ Route::group(['middleware' => ['auth','user'],'prefix'=> '/user'], function() {
     Route::post('/done', 'HireuserController@done');
     Route::get('/editpwu', 'EditpwuserController@index');
     Route::post('/editpwu/edit', 'EditpwuserController@edit');
+    Route::post('/upload', 'HireuserController@upload');
 });

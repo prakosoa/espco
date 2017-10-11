@@ -6,6 +6,8 @@ use Toastr;
 use App\Models\Checkout;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Storage;
+use File;
 
 class HireuserController extends Controller
 {
@@ -20,6 +22,19 @@ class HireuserController extends Controller
         $check->status = 4;
         $check->save();
         Toastr::success('Sueccess!! Coaching status is Done.', 'Success');
+        return back();
+    }
+    public function upload(Request $request){
+        $check = Checkout::where('invoice',$request->id)->first();
+        $this->validate($request,[
+            // 'phonee'=> 'required|numeric|min:10',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:7168|dimensions:max_height=1300',
+        ]);    
+        $upload = Storage::disk('local')->putFile('public/photo-profil', $request->file('image'));
+        $check->receipt = 'storage'.substr($upload, 6);
+        // return $request->all();
+        Toastr::success('Sueccess Upload Receipt', 'Success');
+        $check->save();
         return back();
     }
 }

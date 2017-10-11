@@ -16,13 +16,10 @@
                 {{--<li class="active">User profile</li>--}}
             {{--</ol>--}}
         </section>
-
         <!-- Main content -->
         <section class="content">
-
             <div class="row">
                 <div class="col-md-3">
-
                     <!-- Profile Image -->
                     <div class="box box-primary">
                         <div class="box-body box-profile">
