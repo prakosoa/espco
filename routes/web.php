@@ -29,6 +29,7 @@ Route::post('/registerc/regist', 'Auth\RegisterCoachController@regist');
 Route::get('/adduser', 'AdduserController@index');
 Route::get('/invoice', 'InvoiceController@index');
 Route::get('/listcoach/search', 'ListcoachController@search');
+Route::get('/feedback/{id}', 'FeedbackController@index');
 
 
 
@@ -89,4 +90,5 @@ Route::group(['middleware' => ['auth','user'],'prefix'=> '/user'], function() {
     Route::get('/editpwu', 'EditpwuserController@index');
     Route::post('/editpwu/edit', 'EditpwuserController@edit');
     Route::post('/upload', 'HireuserController@upload');
+    Route::post('/feedback', 'HireuserController@feedback');
 });

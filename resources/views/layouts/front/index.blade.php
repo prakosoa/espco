@@ -4,6 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
+<link rel="icon" href="https://reli.sh/wp-content/themes/relish/assets/img/services/icon-games.png">
     <meta charset="utf-8">
     <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -26,11 +27,13 @@
     <script src="{{ URL::asset('sedna/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
     <!-- jQuery 2.2.3 -->
     <script src="{{ URL::asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
-    {{--<script src="{{ URL::asset('js/fullcalendar.js') }}"></script>--}}
+
     <!-- FullCalendar -->
     <link rel="stylesheet" href="{{ URL::asset('css/fullcalendar.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/espco.css') }}">
-{{--    <link rel="stylesheet" href="{{ URL::asset('plugins/fullcalendar/fullcalendar.print.css') }}">--}}
+
+    <link href="{{ URL::asset('rating/css/star-rating.css') }}" media="all" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('rating/themes/krajee-uni/theme.css') }}" media="all" rel="stylesheet" type="text/css" />
     <!-- Custom styling plus plugins -->
 
 </head>
@@ -46,6 +49,10 @@
 
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- <script src="{{ URL::asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script> -->
+    
+
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
     <script src="{{ URL::asset('sedna/bower_components/retina.js/dist/retina.js') }}"></script>
     <script src="{{ URL::asset('sedna/js/jquery.fancybox.pack.js') }}"></script>
@@ -60,6 +67,9 @@
     <!-- Custom Theme Scripts -->
     <script src="{{ URL::asset('js/custom.min.js') }}"></script>
 
+    <script src="{{ URL::asset('rating/js/star-rating.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('rating/themes/krajee-uni/theme.js') }}"></script>
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -70,5 +80,6 @@
     r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
     ga('create','UA-XXXXX-X','auto');ga('send','pageview');
     </script>
+    @yield('js')
 </body>
 </html>

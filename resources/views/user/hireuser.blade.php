@@ -33,6 +33,7 @@
                                 // $user = \App\User::join('order_schedules as os','users_id','users.id')->where('os.id',$resultorder->order_schedules_id)->first();
                                 $coach = \App\User::join('schedules as sch','coach_id','users.id')->where('sch.order_schedules_id',$resultorder->order_schedules_id)->first();
                                 $coach['name'];
+                                $coach_email = $coach['email'];
                                ?>
                                 <td><a href="{{url('/user/invoice/'.$resultorder->invoice)}}">{{$resultorder->invoice}}</a></td>
                                 <td>@if($coach!=''){{$coach->name}}@else - @endif</td>
@@ -71,9 +72,19 @@
                                         @endif
 
                                         @if($resultorder->status==1)
-                                        <button id="btn-upl" class="btn btn-danger btn-sm btn-block" data-id="{{$resultorder->invoice}}" data-invoice="{{$resultorder->invoice}}" ><i class="fa fa-upload" aria-hidden="true"></i> Upload Reciept</button>
+                                        <button id="btn-upl" class="btn btn-danger btn-sm btn-block" data-id="{{$resultorder->invoice}}" data-invoice="{{$resultorder->invoice}}" ><i class="fa fa-commenting-o" aria-hidden="true"></i> Upload Reciept</button>
                                         @else
                                         <button class="btn btn-primary btn-sm btn-block " disabled><i class="fa fa-upload" aria-hidden="true"></i> Upload Reciept</button>
+                                        @endif
+
+                                        @if($resultorder->status==4 && $resultorder->comment == null)
+                                        @php
+
+                                        @endphp
+                                        <button id="btn-feed" class="btn btn-danger btn-sm btn-block" data-id="{{$resultorder->invoice}}" data-invoice="{{$resultorder->invoice}}" data-email="{{$coach_email}}" ><i class="fa fa-commenting-o" aria-hidden="true"></i> Feedback</button>
+                                        @else
+                                        <button class="btn btn-primary btn-sm btn-block" disabled><i class="fa fa-commenting-o" aria-hidden="true"></i> Feedback</button>
+                    
                                         @endif
                                         </ul>
                                     </div>  
@@ -160,6 +171,37 @@
                         </div>
                     </div>
 
+           <!-- modal feedback -->
+           <div id="modal-feed" class="modal fade" role="dialog">
+                        <div class="modal-default">
+                        <div class="modal-dialog modal-md">
+                            <!-- konten modal-->
+                            <div class="modal-content">
+                            <form method="post" action="{{url('/user/feedback')}}">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="id" id="feed-id">
+                                <!-- heading modal -->
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title"> Feedback</h4>
+                                </div>
+                                <!-- body modal -->
+                                <div class="modal-body">
+                                <input type="hidden" id="feed-email" name="email">
+                                <div style="text-align: center;"><input class="star-rating" required name="rating"></div>
+                                <textarea class="form-control" rows="3" placeholder="Comment" name="comment" required></textarea>
+                                </div>
+                                <!-- footer modal -->
+                                <div class="modal-footer">
+                                    <!-- <button type="button" class="btn btn-outline pull-left" data-dismiss="modal"> No</button> -->
+                                    <button type="submit" class="btn btn-outline">Submit</button>
+                                </div>
+                            
+                            </div>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
         </section>
     </div>
 
@@ -173,26 +215,23 @@
     <script>
         $(function () {
             $('#example1').DataTable();
-//            $('#example2').DataTable({
-//                "paging": true,
-//                "lengthChange": false,
-//                "searching": false,
-//                "ordering": true,
-//                "info": true,
-//                "autoWidth": false
-//            });
         });
         $(document).on('click', '#btn-done', function(){
             $('#done-id').val($(this).data('id'));
             $('#done-invoice').text($(this).data('invoice'));
-
             $('#modal-done').modal('show');
         });
         $(document).on('click', '#btn-upl', function(){
             $('#upl-id').val($(this).data('id'));
             $('#upl-invoice').text($(this).data('invoice'));
-
             $('#modal-upl').modal('show');
+        });
+        $(document).on('click', '#btn-feed', function(){
+            $('#feed-id').val($(this).data('id'));
+            $('#done-invoice').text($(this).data('invoice'));
+            $('#feed-email').val($(this).data('email'));
+
+            $('#modal-feed').modal('show');
         });
       
     </script>
@@ -211,6 +250,15 @@
     
     $("#imgInp").change(function(){
         readURL(this);
+    });
+
+    $(document).on('ready', function(){
+        $('.star-rating').rating({
+            theme: 'krajee-uni',
+            clearButton:'',
+            stars: 5,
+            showCaption: false,
+        });
     });
 </script>
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="icon" href="https://reli.sh/wp-content/themes/relish/assets/img/services/icon-games.png">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Esports Coach</title>
@@ -33,6 +34,8 @@
     <script src="{{ URL::asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
     <link rel="stylesheet" href="{{ URL::asset('css/fullcalendar.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('plugins/toastr/toastr.css') }}">
+    <link href="{{ URL::asset('rating/css/star-rating.css') }}" media="all" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('rating/themes/krajee-uni/theme.css') }}" media="all" rel="stylesheet" type="text/css" />
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -102,6 +105,8 @@
 <script src="{{ URL::asset('dist/js/demo.js') }}"></script>
 <script src="{{ URL::asset('plugins/toastr/toastr.min.js') }}"></script>
 {!! Toastr::render() !!}
+<script src="{{ URL::asset('rating/js/star-rating.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('rating/themes/krajee-uni/theme.js') }}"></script>
 
 <!-- <script src="../../"></script> -->
 <script>
@@ -126,6 +131,7 @@
 
 
 </script>
+
 
 @yield('js')
 </body>

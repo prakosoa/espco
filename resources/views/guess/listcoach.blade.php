@@ -55,25 +55,27 @@
 
 
                 @forelse($coach as $resultcoach)
-                <div class="list-groupds" >
-                    <div href="#" class="list-group-items" >
-                        <div class="media col-md-3">
+                <div class="list-groupds"  >
+                    <div href="#" class="list-group-items row" style="background-color:#efefef; border-bottom: solid 1px #ddd; margin: 0 0 25px;">
+                        <div class="media col-md-2" >
                             <figure class="pull-left">
-                                <img class="media-object img-rounded img-responsive"  src="{{Asset($resultcoach->photo)}}" alt="placehold.it/350x250" style="width:250px; height:130px" >
+                            <a href="{{ url('profilecoach/'.$resultcoach->id)}}"> <img class="media-object img-rounded img-responsive"  src="{{Asset($resultcoach->photo)}}" alt="placehold.it/350x250" style="width:150px; height:150px; margin-top:7px;" > </a>
                             </figure>
                         </div>
-                        <div class="col-md-6">
-                            <h4 class="list-group-item-heading"> {{$resultcoach->name}} <b>"{{$resultcoach->nickname}}"</b> </h4>
-                            <h5 class="list-group-item-heading">
+                        <div class="col-md-7">
+                           <a href="{{ url('profilecoach/'.$resultcoach->id)}}"> <h3 class="list-group-item-heading" style="color:#ff7e65; margin-top:5px;"> {{$resultcoach->name}} <b>"{{$resultcoach->nickname}}"</b> </h3></a>
+                           <h6 class="list-group-item-heading">
                                     @if($resultcoach->games_id==1)
                                          <b>Dota2</b> Coach
                                     @elseif ($resultcoach->games_id==2)
                                         <b>CSGO</b> Coach
                                     @endif
-                            </h5>
-
-                            <p class="list-group-item-text"> {{$resultcoach->about}}
-                            </p>
+                            </h6>
+                            <h5 style="font-size: 10px;margin:-6px 0 0 0;"><input class="star-rating"  value="{{$resultcoach->rating}}"></h5>
+                            
+                            
+                                <p class="list-group-item-text"  style="background-color:#dae2ef;"><b> {{$resultcoach->about}}</b></p>
+                            
                         </div>
                         <div class="col-md-3 text-center">
                             <h3> Rp {{$resultcoach->fee}} <small> /hr </small></h3>
@@ -82,6 +84,7 @@
                         </div>
                     </div>
                 </div>
+
             @empty
                 <p Style="text-align:center;">No data found</p>
             @endforelse
@@ -95,5 +98,18 @@
     @endsection
 
 @section('js')
-
+<!-- <script src="{{ URL::asset('rating/js/star-rating.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('rating/themes/krajee-uni/theme.js') }}"></script> -->
+    <script>
+        $(document).on('ready', function(){
+            $('.star-rating').rating({
+                theme: 'krajee-uni',
+                clearButton:'',
+                stars: 5,
+                showCaption: false,
+                readonly: true,
+                size:'xs',
+            });
+        });
+    </script>
 @endsection

@@ -9,7 +9,7 @@ class Checkout extends Model
     //
     // public $timestamps = true;
     protected $fillable = [
-        'order_schedules_id', 'bank_number', 'bank_name', 'phone', 'total_fee', 'status', 'invoice','receipt',
+        'order_schedules_id', 'bank_number', 'bank_name', 'phone', 'total_fee', 'status', 'invoice','receipt','comment','rating'
     ];
 
     protected $guarded = [

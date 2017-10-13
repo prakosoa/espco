@@ -32,9 +32,20 @@
                             <td>{{$resultcoach->email}}</td>
                             <td>{{$resultcoach->fee}}</td>
                             <td>
-                                {{--<a href="{{"/notes/". $note->id. "/edit"}}" >--}}
-                                <a href="{{url('/admin/editcoach/'.$resultcoach->id)}}" >  <button type="button" class="btn btn-primary btn-s" style="margin: -1px; color: blue;"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
-                                <button id="btn-del" class="btn btn-primary btn-sm" style="margin: -1px; color: red;" data-id="{{$resultcoach->id}}" data-nama="{{$resultcoach->name}}"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                <div class="btn-group">
+                                        <button type="button" class="btn bg-maroon btn-xs dropdown-toggle" data-toggle="dropdown">
+                                            <i class="fa fa-hand-o-up"></i>
+                                            <span>Select Action</span>
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu pull-right" role="menu">
+                                        <a href="{{url('/admin/editcoach/'.$resultcoach->id)}}" >  <button type="button" class="btn btn-primary btn-sm btn-block" style="margin: -1px; color: green;"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button></a>
+                                        <button id="btn-detail" class="btn btn-primary btn-sm btn-block" style="margin: -1px; color: blue;" data-id="{{$resultcoach->id}}" data-nama="{{$resultcoach->name}}"><i class="fa fa-info-circle" aria-hidden="true"></i> Detail</button>
+                                        <button id="btn-del" class="btn btn-primary btn-sm btn-block" style="margin: -1px; color: red;" data-id="{{$resultcoach->id}}" data-nama="{{$resultcoach->name}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+
+                                        </ul>
+                                    </div>  
 
                             </td>
                         </tr>
@@ -77,6 +88,35 @@
                 <!-- /.modal -->
             </div>
 
+            <!-- Modal Detail -->
+            <div class="modal fade" id="modal-detail">
+                <div class="modal-info">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+                            <form method="post" action="{{url('/admin/coach/detail')}}" style=";">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="id" id="detail-id">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Detail Coach</h4>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                               
+                            </div>
+                            </form>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+            </div>
+            <!-- /end modal detail -->
+
         </section>
     </div>
 
@@ -90,24 +130,16 @@
     <script>
         $(function () {
             $('#example1').DataTable();
-//            $('#example2').DataTable({
-//                "paging": true,
-//                "lengthChange": false,
-//                "searching": false,
-//                "ordering": true,
-//                "info": true,
-//                "autoWidth": false
-//            });
         });
         $(document).on('click', '#btn-del', function(){
             $('#del-id').val($(this).data('id'));
             $('#del-nama').text($(this).data('nama'));
-//            $('#ganti-nim').text($(this).data('nim'));
-//            $('#ganti-nama').text($(this).data('nama'));
-//            $('#ganti-judul').text($(this).data('judul'));
-//            $('#ganti-dosen').text($(this).data('dosen'));
-
             $('#modal-del').modal('show');
+        });
+        $(document).on('click', '#btn-detail', function(){
+            $('#detail-id').val($(this).data('id'));
+            $('#del-nama').text($(this).data('nama'));
+            $('#modal-detail').modal('show');
         });
 
     </script>

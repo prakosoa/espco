@@ -1,6 +1,6 @@
 <header>
     <div class="header-content">
-        <div class="logo"><a href="{{ url('/') }}" style=" font-weight: bold;"><img src="img/sedna-logo.png" alt="Esports Coach"></a></div>
+        <div class="logo"><a href="{{ url('/') }}" style=" font-weight: bold;"><!--<img src="img/sedna-logo.png" alt="Esports Coach">-->Esports Coach</a></div>
         <div class="header-nav">
             <nav>
                 <ul class="primary-nav">

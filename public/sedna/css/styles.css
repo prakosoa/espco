@@ -349,7 +349,7 @@ Hero
 .hero {
   min-height: 750px;
   /* background: url("../img/hero.jpg") center center; */
-  background: url("http://www.elginpk.com/worsley1617_1/wange/es3.jpg") center center;
+  background: url("http://localhost:8000/storage/es.jpg") center center;
   background-size: cover;
   position: relative; }
   .hero .down-arrow a {
@@ -505,7 +505,7 @@ Features-stack
   .features .ipad-wrap {
     width: 726px;
     height: 1202px;
-    background: url("http://i48.tinypic.com/msm51j.png") no-repeat center center;
+    background: url("http://localhost:8000/storage/invoker.png") no-repeat center center;
     z-index: 1;
     margin-right: -200px; }
   /* .features .iphone-wrap {
@@ -539,7 +539,7 @@ Features-stack
     position: absolute;
     width: 916px;
     height: 790px;
-    background: url("http://www.esportsonly.com/assets/Uploads/Articles/_resampled/ResizedImageWzk4MCw1NDFd/connection-trans.png") no-repeat center center;
+    background: url("http://localhost:8000/storage/csgo.png") no-repeat center center;
     top: 114px;
     z-index: 4;
     left: 50%; }

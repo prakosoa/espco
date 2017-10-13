@@ -1,8 +1,7 @@
 @extends('layouts.front.index')
 
 @section('css')
-<link href="{{ URL::asset('rating/css/star-rating.css') }}" media="all" rel="stylesheet" type="text/css" />
-    <link href="{{ URL::asset('rating/themes/krajee-uni/theme.css') }}" media="all" rel="stylesheet" type="text/css" />
+
 @endsection
 
 @section('header')
@@ -68,38 +67,38 @@
             <!-- /.box -->
         </div>
         <!-- /.col -->
-
-
-       
         <div class="col-md-9">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#schedule" >Select Schedule</a></li>
-                    <li ><a href="{{url('/feedback/'.$coach->id)}}" >Feedback</a></li>  
+                    <li ><a href="{{url('/profilecoach/'.$coach->id)}}" >Select Schedule</a></li>
+                    <li class="active"><a href="#feedback" >Feedback</a></li>  
                 </ul>
-
-                {{--calendar--}}
-                    <div class="tab-content">
-                        <div class="active tab-pane" id="schedule">
-                @include('guess.calendar')
-                            <div class="row">
-                                <br>
-                                    <form action="{{ route('user.hirecoach')}}" method="POST">
-                                    {{csrf_field()}}
-                                    <input id="ordered-schedule" type="hidden" name="ordered_schedule"/>
-                                    <input name="coach_id" type="hidden" value="{{$coach->id}}"/>
-                                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Hire Now!" />
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-content">
-                        <div class="tab-pane" id="feedback">
+<br>
+                @foreach($comment as $resultcomment)
+                   <!-- Post -->
+                   <br>
+                   <div class="post clearfix" style="border-bottom : solid 1px #ddd; padding-left:50px;">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{Asset($resultcomment->photo)}}" alt="User Image" style="width:50px;">
+                    <span>
+                        <h10 class="description pull-right" style="font-size: 10px;padding-top:15px;padding-right:-50px;"><input class="star-rating" value="{{$resultcomment->rating}}"><h10>   
+                        </span>
+                        <span class="username">
+                          <a href="#" style=" font-size:150%;">{{$resultcomment->name}}</a>
+                        </span>
+                         <span class="description pull-right" style="padding-right:60px;";>{{$resultcomment->updated_at->format('d M Y - h:i A')}}</span>
                         
-                        </div>
-                    </div>
-                    
-            </div>
+                  </div>
+                  <!-- /.user-block -->
+                  <p style="text-color: black; padding-left:70px;">
+                  <b>  {{$resultcomment->comment}}</b>
+                  </p>
+                </div>
+                <!-- /.post -->
+            @endforeach
+
+
+
         </div>
     </div>
 </section>
@@ -134,8 +133,6 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ URL::asset('dist/js/demo.js') }}"></script>
     <!-- <script src="../../"></script> -->
-    <script src="{{ URL::asset('rating/js/star-rating.js') }}" type="text/javascript"></script>
-    <script src="{{ URL::asset('rating/themes/krajee-uni/theme.js') }}"></script>
     <script>
         $(document).on('ready', function(){
             $('.star-rating').rating({
@@ -148,7 +145,6 @@
             });
         });
     </script>
-
 
 
 @endsection
