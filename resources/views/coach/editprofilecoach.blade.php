@@ -142,7 +142,7 @@
                                         <label for="inputGame" class="col-sm-2 control-label">Game</label>
 
                                         <div class="col-sm-10">
-                                            <select name ="games_id" class="form-control select2" style="width: 100%;" >
+                                            <select name ="games_id" class="form-control select2" style="width: 100%;" value="{{ Auth::user()->games_id}}" required>
                                                 <option value="" selected="selected"  disabled="disabled"><b>Select Game</b></option>
                                                 <option value="1">Dota2</option>
                                                 <option value="2">CS:GO</option>

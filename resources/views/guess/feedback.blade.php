@@ -86,7 +86,7 @@
                         <span class="username">
                           <a href="#" style=" font-size:150%;">{{$resultcomment->name}}</a>
                         </span>
-                         <span class="description pull-right" style="padding-right:60px;";>{{$resultcomment->updated_at->format('d M Y - h:i A')}}</span>
+                         <span class="description pull-right" style="margin-right:-100px;";>{{$resultcomment->updated_at->format('d M Y - h:i A')}}</span>
                         
                   </div>
                   <!-- /.user-block -->
@@ -96,9 +96,6 @@
                 </div>
                 <!-- /.post -->
             @endforeach
-
-
-
         </div>
     </div>
 </section>

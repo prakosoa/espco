@@ -45,11 +45,11 @@
                                 @elseif($resultorder->status==2)
                                 <span class="label label-primary">Paid</span>
                                 @elseif($resultorder->status==3)
-                                <span class="label label-success">Approved</span>
+                                <span class="label bg-teal">Approved</span>
                                 @elseif($resultorder->status==4)
                                 <span class="label label-success">Done</span>
                                 @elseif($resultorder->status==5)
-                                <span class="label label-danger">Refund</span>
+                                <span class="label bg-orange">Refund</span>
                                 @elseif($resultorder->status==6)
                                 <span class="label label-danger">Canceled</span>
                                 @endif

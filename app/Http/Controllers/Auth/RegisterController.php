@@ -10,6 +10,8 @@ use Toastr;
 
 class RegisterController extends Controller
 {
+
+    
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -73,7 +75,13 @@ class RegisterController extends Controller
                 'level' => $data['level'],
                 
             ]);
+            
             Toastr::success('Register Success', 'Success!!');
+    }
+    protected function redirectTo(){
+        Toastr::success('Sueccess Register', 'Success!!');
+
+        return '/login';
     }
 
 }

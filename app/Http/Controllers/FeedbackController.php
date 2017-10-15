@@ -21,7 +21,8 @@ class FeedbackController extends Controller
         //     ->where('checkouts.status',4)->get();
 
         $schid =  Schedule::select('order_schedules_id')->where('coach_id',$id)->get();
-        $comment = Checkout::join('order_schedules', 'order_schedules.id','order_schedules_id')
+       $comment = Checkout::select('users.photo','users.name','checkouts.updated_at','checkouts.rating','checkouts.comment')
+       ->join('order_schedules', 'order_schedules.id','order_schedules_id')
                 ->join('users','users.id','users_id')
                 ->whereIn('order_schedules_id',$schid)->where('status',4)->get();
 

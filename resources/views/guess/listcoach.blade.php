@@ -56,7 +56,7 @@
 
                 @forelse($coach as $resultcoach)
                 <div class="list-groupds"  >
-                    <div href="#" class="list-group-items row" style="background-color:#efefef; border-bottom: solid 1px #ddd; margin: 0 0 25px;">
+                    <div href="#" class="list-group-items row" style=" border-bottom: solid 3px #ddd;border-right: solid 4px #ddd;border-radius: 5px; margin: 0 0 25px;">
                         <div class="media col-md-2" >
                             <figure class="pull-left">
                             <a href="{{ url('profilecoach/'.$resultcoach->id)}}"> <img class="media-object img-rounded img-responsive"  src="{{Asset($resultcoach->photo)}}" alt="placehold.it/350x250" style="width:150px; height:150px; margin-top:7px;" > </a>
@@ -74,7 +74,7 @@
                             <h5 style="font-size: 10px;margin:-6px 0 0 0;"><input class="star-rating"  value="{{$resultcoach->rating}}"></h5>
                             
                             
-                                <p class="list-group-item-text"  style="background-color:#dae2ef;"><b> {{$resultcoach->about}}</b></p>
+                                <p class="list-group-item-text"  ><b> {{$resultcoach->about}}</b></p>
                             
                         </div>
                         <div class="col-md-3 text-center">

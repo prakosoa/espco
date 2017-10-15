@@ -15,9 +15,9 @@ class HirecoachController extends Controller
         $order = DB::table('checkouts')
         ->join('order_schedules','order_schedules.id','checkouts.order_schedules_id')
         ->join('schedules','schedules.order_schedules_id','order_schedules.id')
-        ->where('checkouts.status','>',1)
         ->where('schedules.coach_id',Auth::user()->id)
-        ->get();
+        ->where('checkouts.status','>',1)
+        ->get(['checkouts.*','checkouts.status as status2', 'order_schedules.*','schedules.*']);
         return view('coach.hirecoach')->with('order',$order);
 
 

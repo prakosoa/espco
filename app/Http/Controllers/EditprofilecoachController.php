@@ -40,7 +40,7 @@ class EditprofilecoachController extends Controller
         $user->fee = $request->fee;
         $user->bank = $request->bank;
         $user->about = $request->about;
-        Toastr::success('Sueccess Edit Profile', 'Success');
+        // Toastr::success('Sueccess Edit Profile', 'Success');
         $user->save();
 
         // return $path = 'app/public'.substr($user->photo, 7);

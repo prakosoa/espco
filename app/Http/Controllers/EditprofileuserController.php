@@ -29,7 +29,7 @@ class EditprofileuserController extends Controller
         $user->email = $request->emaill;
         $user->phone = $request->phonee;
         $user->steam = $request->steam;
-        Toastr::success('Sueccess Edit Profile', 'Success');
+        // Toastr::success('Sueccess Edit Profile', 'Success');
         $user->save();
         $path = $user->photo;
         if($request->image == 'storage/photo-profil/photo-default.jpg') {

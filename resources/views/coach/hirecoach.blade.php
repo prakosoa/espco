@@ -26,28 +26,32 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <?php $tmp = ''; ?>
                         @foreach($order as $resultorder)
+                            @if($tmp != $resultorder->invoice)
                             <tr>
-                            <?php 
+                            <?php
                                 $user = \App\User::join('order_schedules as os','users_id','users.id')->where('os.id',$resultorder->order_schedules_id)->first();
                                 // $coach = \App\User::join('schedules as sch','coach_id','users.id')->where('sch.id',$resultorder->order_schedules_id)->first(); 
                                 ?>
+                               
+                                    
                                 <td><a href="{{url('/coach/invoice/'.$resultorder->invoice)}}">{{$resultorder->invoice}}</a></td>
                                 <td>@if($user!=''){{$user->name}}@endif</td>
                                 <td>@if($user!=''){{$user->email}}@endif</a></td>
                                 <td>{{$resultorder->total_fee}}</td>
                                 <td>
-                                @if($resultorder->status==1)
+                                @if($resultorder->status2==1)
                                 <span class="label label-warning">Pending</span>
-                                @elseif($resultorder->status==2)
+                                @elseif($resultorder->status2==2)
                                 <span class="label label-primary">Paid</span>
-                                @elseif($resultorder->status==3)
+                                @elseif($resultorder->status2==3)
                                 <span class="label bg-teal">Approved</span>
-                                @elseif($resultorder->status==4)
+                                @elseif($resultorder->status2==4)
                                 <span class="label label-success">Done</span>
-                                @elseif($resultorder->status==5)
-                                <span class="label label-danger">Refund</span>
-                                @elseif($resultorder->status==6)
+                                @elseif($resultorder->status2==5)
+                                <span class="label bg-orange">Refund</span>
+                                @elseif($resultorder->status2==6)
                                 <span class="label bg-maroon">Canceled</span>
                                 @endif
                                 </td>
@@ -60,13 +64,13 @@
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
                                         <ul class="dropdown-menu pull-right" role="menu">
-                                                @if($resultorder->status==2)
+                                                @if($resultorder->status2==2)
                                                 <button id="btn-app" class="btn btn-primary btn-sm btn-block" data-id="{{$resultorder->invoice}}" data-invoice="{{$resultorder->invoice}}" ><i class="fa fa-money" aria-hidden="true"></i> Approve</button>
                                                 @else
                                                 <button class="btn btn-primary btn-sm btn-block" disabled><i class="fa fa-money" aria-hidden="true"></i> Approve</button>
                                                 @endif
 
-                                                 @if($resultorder->status<3)
+                                                 @if($resultorder->status2<3)
                                                 <button id="btn-refuse" class="btn btn-danger btn-sm btn-block" data-id="{{$resultorder->invoice}}" data-invoice="{{$resultorder->invoice}}" ><i class="fa fa-times-circle" aria-hidden="true"></i> Refuse</button>
                                                 @else
                                                 <button class="btn btn-danger btn-sm btn-block" disabled><i class="fa fa-times-circle" aria-hidden="true"></i> Refuse</button>
@@ -75,7 +79,10 @@
                                         </ul>
                                     </div>   
                                 </td>
+                                
                             </tr>
+                                <?php $tmp = $resultorder->invoice; ?> 
+                            @endif 
                         @endforeach
 
                         </tbody>
